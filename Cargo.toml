@@ -1,0 +1,23 @@
+[package]
+name = "arcana-server"
+version = "0.1.0"
+edition = "2021"
+description = "Servidor local de ARCANA: perfiles, salas en línea (SSE) y archivos del juego"
+publish = false
+
+[dependencies]
+axum = "0.7.9"
+# Cargo.lock fija tokio 1.43 / mio 1.0.3 / socket2 0.5.8: usan windows-sys 0.52, que trae sus librerías de importación.
+# Las versiones nuevas (windows-sys 0.61) las generan con dlltool + `as`, que el Rust GNU de Windows no incluye.
+# No hagas `cargo update` sin comprobar que sigue compilando con el toolchain GNU.
+tokio = { version = "~1.43", features = ["rt-multi-thread", "macros", "net", "sync", "signal"] }
+tokio-stream = "0.1.16"
+tower-http = { version = "0.5.2", features = ["fs"] }
+serde_json = "1.0.133"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"

@@ -1,0 +1,14 @@
+# docker compose up -d --build   → servidor de ARCANA en el puerto 25565 (perfiles en el volumen arcana-datos)
+services:
+  arcana:
+    build: .
+    image: arcana-server
+    container_name: arcana
+    ports:
+      - "25565:25565"
+    volumes:
+      - arcana-datos:/data
+    restart: unless-stopped
+
+volumes:
+  arcana-datos:
