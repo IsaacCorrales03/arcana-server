@@ -35,6 +35,8 @@ use tokio::sync::mpsc::{unbounded_channel, UnboundedSender};
 use tokio_stream::{wrappers::UnboundedReceiverStream, Stream, StreamExt};
 use tower_http::services::{ServeDir, ServeFile};
 
+mod box_rotation;
+
 const MAX_BODY: usize = 64 * 1024;
 const MAX_LOG: usize = 5000; // una partida larga ronda unos cientos de mensajes
 
@@ -501,6 +503,7 @@ async fn main() {
     let router = Router::new()
         .route("/api/perfil/:name", get(get_perfil).put(put_perfil))
         .route("/api/salas", get(salas))
+        .route("/api/tienda/rotacion", get(box_rotation::get))
         .route("/api/sala/:code/:rol", get(escuchar).post(publicar))
         .route("/api/canal/:code/:quien", get(escuchar_canal).post(publicar_canal))
         .route("/api/*resto", any(|| async { no_existe() }))
