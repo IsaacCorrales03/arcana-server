@@ -1,0 +1,1 @@
+cargo:rustc-env=MIME_TYPES_GENERATED_PATH=C:\Users\Isaac\Downloads\arcana (1)\arcana-server-render\target\debug\build\mime_guess/9223af7a7db05ab1\out\mime_types_generated.rs

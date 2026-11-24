@@ -12,7 +12,6 @@ axum = "0.7.9"
 # No hagas `cargo update` sin comprobar que sigue compilando con el toolchain GNU.
 tokio = { version = "~1.43", features = ["rt-multi-thread", "macros", "net", "sync", "signal"] }
 tokio-stream = "0.1.16"
-tower-http = { version = "0.5.2", features = ["fs"] }
 serde_json = "1.0.133"
 
 [profile.release]

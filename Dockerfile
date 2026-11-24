@@ -11,7 +11,7 @@ RUN cargo build --release --locked
 
 # 2) imagen final: solo el binario y un usuario sin privilegios
 FROM debian:bookworm-slim
-RUN useradd --system --uid 10001 --create-home arcana && mkdir -p /data /app/web && chown arcana /data
+RUN useradd --system --uid 10001 --create-home arcana && mkdir -p /data && chown arcana /data
 COPY --from=build /src/target/release/arcana-server /app/arcana-server
 USER arcana
 WORKDIR /app
@@ -20,5 +20,4 @@ VOLUME ["/data"]
 EXPOSE 25565
 # el servidor se cierra limpio con Ctrl+C (SIGINT); Docker manda SIGTERM por defecto
 STOPSIGNAL SIGINT
-# --static apunta a una carpeta vacía: no se sirve la web, solo /api
-ENTRYPOINT ["/app/arcana-server", "--host", "0.0.0.0", "--port", "25565", "--static", "/app/web", "--data", "/data/perfiles.json"]
+ENTRYPOINT ["/app/arcana-server", "--host", "0.0.0.0", "--port", "25565", "--data", "/data/perfiles.json"]

@@ -1,7 +1,6 @@
 //! Servidor de ARCANA (port de server.ts): perfiles en un único JSON, salas por código con SSE
-//! (cada jugador escucha con GET y publica con POST; el servidor solo reenvía), espectadores y los
-//! archivos del juego (dist/). Electron lo arranca con `--port 0 --watch-stdin` y lee la línea
-//! «ARCANA_LISTO http://…» para saber dónde cargar.
+//! (cada jugador escucha con GET y publica con POST; el servidor solo reenvía) y espectadores.
+//! Solo sirve /api: el cliente es Godot.
 //! shortcut: sin autenticación (quien sabe el código o el nombre puede usarlos) y salas en memoria,
 //! igual que server.ts; añadir sesiones si el juego sale de la red local.
 
@@ -9,7 +8,7 @@ use std::{
     collections::HashMap,
     convert::Infallible,
     hash::{BuildHasher, Hasher},
-    io::{Read, Write},
+    io::Write,
     path::PathBuf,
     pin::Pin,
     sync::{
@@ -33,7 +32,6 @@ use axum::{
 use serde_json::{json, Map, Value};
 use tokio::sync::mpsc::{unbounded_channel, UnboundedSender};
 use tokio_stream::{wrappers::UnboundedReceiverStream, Stream, StreamExt};
-use tower_http::services::{ServeDir, ServeFile};
 
 mod box_rotation;
 
@@ -461,18 +459,14 @@ async fn publicar(State(app): State<St>, Path((code, rol)): Path<(String, String
 struct Config {
     host: String,
     port: u16,
-    estaticos: PathBuf,
     datos: PathBuf,
-    vigila_stdin: bool,
 }
 
 fn config() -> Config {
     let mut c = Config {
         host: "127.0.0.1".into(),
         port: 25565,
-        estaticos: PathBuf::from("dist"),
         datos: PathBuf::from("data/perfiles.json"),
-        vigila_stdin: false,
     };
     let mut args = std::env::args().skip(1);
     while let Some(a) = args.next() {
@@ -480,9 +474,7 @@ fn config() -> Config {
             "--host" => c.host = args.next().unwrap_or(c.host),
             "--lan" => c.host = "0.0.0.0".into(), // abre el servidor a la red local (partidas en línea entre equipos)
             "--port" => c.port = args.next().and_then(|p| p.parse().ok()).unwrap_or(c.port),
-            "--static" => c.estaticos = args.next().map(PathBuf::from).unwrap_or(c.estaticos),
             "--data" => c.datos = args.next().map(PathBuf::from).unwrap_or(c.datos),
-            "--watch-stdin" => c.vigila_stdin = true,
             otro => eprintln!("argumento desconocido: {otro}"),
         }
     }
@@ -499,15 +491,13 @@ async fn main() {
         ids: AtomicU64::new(1),
         disco: Mutex::new(()),
     });
-    let index = c.estaticos.join("index.html");
     let router = Router::new()
         .route("/api/perfil/:name", get(get_perfil).put(put_perfil))
         .route("/api/salas", get(salas))
         .route("/api/tienda/rotacion", get(box_rotation::get))
         .route("/api/sala/:code/:rol", get(escuchar).post(publicar))
         .route("/api/canal/:code/:quien", get(escuchar_canal).post(publicar_canal))
-        .route("/api/*resto", any(|| async { no_existe() }))
-        .fallback_service(ServeDir::new(&c.estaticos).fallback(ServeFile::new(index)))
+        .fallback(any(|| async { no_existe() }))
         .layer(DefaultBodyLimit::max(MAX_BODY))
         .with_state(app);
 
@@ -521,20 +511,6 @@ async fn main() {
     let addr = listener.local_addr().map(|a| a.to_string()).unwrap_or_default();
     println!("ARCANA_LISTO http://{addr}");
     let _ = std::io::stdout().flush();
-
-    // Lanzado por Electron: si el proceso padre muere, su tubería de stdin se cierra y el servidor también.
-    if c.vigila_stdin {
-        std::thread::spawn(|| {
-            let mut buf = [0u8; 256];
-            let mut stdin = std::io::stdin();
-            loop {
-                match stdin.read(&mut buf) {
-                    Ok(0) | Err(_) => std::process::exit(0),
-                    Ok(_) => {}
-                }
-            }
-        });
-    }
 
     let fin = async {
         let _ = tokio::signal::ctrl_c().await;
