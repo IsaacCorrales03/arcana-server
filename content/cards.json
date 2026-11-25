@@ -1,0 +1,3640 @@
+[
+  {
+    "id": "F00",
+    "name": "0 · El Loco",
+    "type": "unit",
+    "school": null,
+    "arcana": {
+      "key": "fool",
+      "number": 0
+    },
+    "cost": 2,
+    "rarity": "legendary",
+    "atk": 4,
+    "def": 2,
+    "text": "Activa (1/turno): descarta 1 carta; roba 1. Regla rota: El Loco puede atacar directamente aunque el rival tenga Unidades.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "activated",
+          "limit": {
+            "per": "turn",
+            "times": 1
+          }
+        },
+        "cost": [
+          {
+            "kind": "discard",
+            "count": 1
+          }
+        ],
+        "actions": [
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F01",
+    "name": "Viajero del Umbral",
+    "type": "unit",
+    "school": "wands",
+    "cost": 1,
+    "rarity": "common",
+    "atk": 2,
+    "def": 1,
+    "text": "Al entrar: puedes descartar 1 carta; si lo haces, gana +1 ATQ hasta fin de ronda.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "optional": true,
+        "actions": [
+          {
+            "kind": "discard",
+            "count": 1
+          }
+        ],
+        "thenIfDone": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "untilEndOfRound"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F02",
+    "name": "Bufón de los Caminos",
+    "type": "unit",
+    "school": "wands",
+    "cost": 2,
+    "rarity": "common",
+    "atk": 4,
+    "def": 2,
+    "text": "Cada vez que robes una carta, gana +1 ATQ permanente.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onDraw"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "permanent"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F03",
+    "name": "Peregrina del Azar",
+    "type": "unit",
+    "school": "cups",
+    "cost": 3,
+    "rarity": "rare",
+    "atk": 3,
+    "def": 5,
+    "text": "Al entrar: Presagio 2. Por cada carta descartada gana +1 DEF.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "omen",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            },
+            "per": "discardedThisRound"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F04",
+    "name": "Apuesta Temeraria",
+    "type": "trick",
+    "school": "wands",
+    "cost": 1,
+    "rarity": "common",
+    "text": "Al declararse un ataque de una Unidad aliada: esa Unidad gana +2 ATQ en este enfrentamiento; después del enfrentamiento recibes 1 PV de daño.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared",
+          "by": "ally"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 2,
+            "target": {
+              "kind": "attackParticipant",
+              "role": "attacker"
+            },
+            "duration": {
+              "kind": "thisCombat"
+            }
+          },
+          {
+            "kind": "damagePlayer",
+            "amount": 1,
+            "player": "self",
+            "timing": "afterCombat"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F05",
+    "name": "Cambio de Rumbo",
+    "type": "trick",
+    "school": "swords",
+    "cost": 1,
+    "rarity": "common",
+    "text": "Cuando una Unidad aliada sea objetivo de un ataque, o cualquier Unidad sea objetivo de un efecto: elige a qué Unidad se redirige el ataque o el efecto.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyTargetedByAttack"
+        },
+        "actions": [
+          {
+            "kind": "redirectAttack",
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "excludeAttackTarget": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F06",
+    "name": "Sendero Imprevisto",
+    "type": "spell",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "common",
+    "duration": 3,
+    "text": "Duración de 3 turnos propios. La primera vez en cada turno que descartes una carta por el coste de una habilidad, una Unidad aliada gana +1 DEF hasta fin de ronda.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onDiscard",
+          "asAbilityCost": true
+        },
+        "conditions": [
+          {
+            "kind": "firstTimeThis",
+            "per": "turn"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self"
+            },
+            "duration": {
+              "kind": "untilEndOfRound"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F07",
+    "name": "Destino Voluble",
+    "type": "spell",
+    "school": "wands",
+    "cost": 3,
+    "rarity": "rare",
+    "duration": 2,
+    "text": "Duración de 2 turnos propios. Cada ronda, tu primera Unidad que declare un ataque o sea objetivo de uno gana +2 ATQ en ese enfrentamiento.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared",
+          "by": "any"
+        },
+        "conditions": [
+          {
+            "kind": "firstTimeThis",
+            "per": "round"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 2,
+            "target": {
+              "kind": "attackParticipant",
+              "role": "either",
+              "owner": "self"
+            },
+            "duration": {
+              "kind": "thisCombat"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F08",
+    "name": "Explorador Errante",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 4,
+    "rarity": "epic",
+    "atk": 4,
+    "def": 5,
+    "text": "Al entrar: roba 1 carta y luego descarta 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "draw",
+            "count": 1
+          },
+          {
+            "kind": "discard",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F09",
+    "name": "Santo Grial",
+    "type": "trick",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "common",
+    "text": "Cuando una Unidad aliada fuera a ser destruida por un enfrentamiento: en su lugar no es destruida; el daño a PV del enfrentamiento se aplica normalmente.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyAboutToBeDestroyed",
+          "cause": "combat"
+        },
+        "actions": [
+          {
+            "kind": "preventDestruction",
+            "target": {
+              "kind": "attackParticipant",
+              "role": "either"
+            },
+            "scope": "combat"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M00",
+    "name": "I · El Mago",
+    "type": "unit",
+    "school": null,
+    "arcana": {
+      "key": "magician",
+      "number": 1
+    },
+    "cost": 4,
+    "rarity": "legendary",
+    "atk": 3,
+    "def": 5,
+    "text": "Activa (1/turno): tu próximo Hechizo jugado esta ronda cuesta 1 EN menos (mínimo 1). Regla rota: mientras El Mago esté en tu campo, tus Hechizos no pierden duración cuando termina tu turno.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "activated",
+          "limit": {
+            "per": "turn",
+            "times": 1
+          }
+        },
+        "actions": [
+          {
+            "kind": "reduceNextSpellCost",
+            "amount": 1,
+            "min": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M01",
+    "name": "Aprendiz del Círculo",
+    "type": "unit",
+    "school": "swords",
+    "cost": 1,
+    "rarity": "common",
+    "atk": 1,
+    "def": 2,
+    "text": "Al entrar: Presagio 2.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "omen",
+            "count": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M02",
+    "name": "Canalizadora Arcana",
+    "type": "unit",
+    "school": "swords",
+    "cost": 2,
+    "rarity": "common",
+    "atk": 2,
+    "def": 3,
+    "text": "La primera vez que juegues un Hechizo en tu turno, esta Unidad gana +1 DEF hasta fin de ronda.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onSpellPlayed",
+          "by": "self"
+        },
+        "conditions": [
+          {
+            "kind": "firstTimeThis",
+            "per": "turn"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "untilEndOfRound"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M03",
+    "name": "Guardián de Sigilos",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 3,
+    "rarity": "rare",
+    "atk": 3,
+    "def": 5,
+    "text": "Gana +1 ATQ por cada Hechizo activo en tu campo.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            },
+            "per": "spellInPlay"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M04",
+    "name": "Tejedor de Maná",
+    "type": "unit",
+    "school": "swords",
+    "cost": 5,
+    "rarity": "epic",
+    "atk": 4,
+    "def": 6,
+    "text": "Al entrar: si controlas un Hechizo, roba 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "conditions": [
+          {
+            "kind": "controlsSpell"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M05",
+    "name": "Círculo de Potencia",
+    "type": "spell",
+    "school": "swords",
+    "cost": 2,
+    "rarity": "common",
+    "duration": 3,
+    "text": "Duración de 3 turnos propios. Tus Unidades ganan +1 ATQ mientras este Hechizo permanezca en campo.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self"
+            },
+            "duration": {
+              "kind": "whileInPlay"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M06",
+    "name": "Archivo Astral",
+    "type": "spell",
+    "school": "swords",
+    "cost": 3,
+    "rarity": "rare",
+    "duration": "indefinite",
+    "text": "Duración indefinida. Una vez por turno propio, cuando juegues un Hechizo, puedes realizar Presagio 2.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onSpellPlayed",
+          "by": "self"
+        },
+        "conditions": [
+          {
+            "kind": "firstTimeThis",
+            "per": "turn"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "omen",
+            "count": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M07",
+    "name": "Sello de Interferencia",
+    "type": "trick",
+    "school": "swords",
+    "cost": 2,
+    "rarity": "common",
+    "text": "Cuando un oponente active una habilidad activa de Unidad: niega esa habilidad.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onActiveAbilityActivated",
+          "by": "opponent"
+        },
+        "actions": [
+          {
+            "kind": "negate",
+            "what": "activeAbility"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M08",
+    "name": "Contraconjuro",
+    "type": "trick",
+    "school": "swords",
+    "cost": 3,
+    "rarity": "rare",
+    "text": "Cuando un oponente juegue un Hechizo: niega ese Hechizo.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onSpellPlayed",
+          "by": "opponent"
+        },
+        "actions": [
+          {
+            "kind": "negate",
+            "what": "spell"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M09",
+    "name": "Descarga Rúnica",
+    "type": "trick",
+    "school": "wands",
+    "cost": 2,
+    "rarity": "common",
+    "text": "Cuando se declare un ataque: la Unidad enemiga que participa (atacante o defensora) recibe −2 ATQ hasta fin de ese enfrentamiento (mínimo 0).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": -2,
+            "target": {
+              "kind": "attackParticipant",
+              "role": "either",
+              "owner": "opponent"
+            },
+            "duration": {
+              "kind": "thisCombat"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P00",
+    "name": "II · La Sacerdotisa",
+    "type": "unit",
+    "school": null,
+    "arcana": {
+      "key": "priestess",
+      "number": 2
+    },
+    "cost": 3,
+    "rarity": "legendary",
+    "atk": 3,
+    "def": 6,
+    "text": "Activa (1/turno): paga 2 PV; hasta fin de ronda, cada vez que recuperes PV por el efecto de una carta, gana +1 ATQ permanente. Regla rota: mientras La Sacerdotisa esté en tu campo, el daño de tus robos fallidos lo pierde el rival.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "activated",
+          "limit": {
+            "per": "turn",
+            "times": 1
+          }
+        },
+        "cost": [
+          {
+            "kind": "payHp",
+            "amount": 2
+          }
+        ],
+        "actions": [
+          {
+            "kind": "setRoundFlag",
+            "key": "healGrowth"
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "onHealed"
+        },
+        "conditions": [
+          {
+            "kind": "roundFlag",
+            "key": "healGrowth"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "permanent"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P01",
+    "name": "Oráculo del Velo",
+    "type": "unit",
+    "school": "cups",
+    "cost": 1,
+    "rarity": "common",
+    "atk": 1,
+    "def": 3,
+    "text": "Al entrar: Presagio 2. Si controlas a \"La Sacerdotisa\", recupera 1 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "omen",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "conditions": [
+          {
+            "kind": "controlsCard",
+            "cardId": "P00"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "heal",
+            "amount": 1,
+            "player": "self"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P02",
+    "name": "Custodia del Silencio",
+    "type": "unit",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "common",
+    "atk": 3,
+    "def": 4,
+    "text": "Mientras esté en DEF, gana +1 DEF. Activa (1/turno): paga 1 PV: gana +2 DEF adicionales hasta el final de la ronda.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "inPosition",
+            "position": "def"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "activated",
+          "limit": {
+            "per": "turn",
+            "times": 1
+          }
+        },
+        "cost": [
+          {
+            "kind": "payHp",
+            "amount": 1
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 2,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "untilEndOfRound"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P03",
+    "name": "Lectora de Estrellas",
+    "type": "unit",
+    "school": "swords",
+    "cost": 3,
+    "rarity": "rare",
+    "atk": 3,
+    "def": 5,
+    "text": "Al entrar: mira las 2 primeras cartas del mazo rival; devuélvelas en el mismo orden.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "peekOpponentDeck",
+            "count": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P04",
+    "name": "Centinela Lunar",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 4,
+    "rarity": "epic",
+    "atk": 4,
+    "def": 6,
+    "text": "Mientras controles un Hechizo, gana +1 DEF. Al entrar: si tienes menos PV que tu rival, recupera 2 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "controlsSpell"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "conditions": [
+          {
+            "kind": "hpBelowOpponent"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "heal",
+            "amount": 2,
+            "player": "self"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P05",
+    "name": "Espejo de Augurios",
+    "type": "spell",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "common",
+    "duration": 3,
+    "text": "Duración de 3 turnos propios. Al inicio de tu turno, antes de robar: puedes pagar 1 PV para activar Presagio 3.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onTurnStart",
+          "whose": "self",
+          "beforeDraw": true
+        },
+        "optional": true,
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 1,
+            "player": "self"
+          },
+          {
+            "kind": "omen",
+            "count": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P06",
+    "name": "Santuario del Velo",
+    "type": "spell",
+    "school": "cups",
+    "cost": 4,
+    "rarity": "epic",
+    "duration": "indefinite",
+    "text": "Duración indefinida. La primera vez por ronda que una Unidad aliada en DEF fuera a ser destruida por un efecto, evita esa destrucción.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyAboutToBeDestroyed",
+          "cause": "effect",
+          "position": "def"
+        },
+        "actions": [
+          {
+            "kind": "preventDestruction",
+            "target": {
+              "kind": "contextual"
+            },
+            "scope": "effect",
+            "oncePer": "round"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P07",
+    "name": "Visión Interrumpida",
+    "type": "trick",
+    "school": "swords",
+    "cost": 1,
+    "rarity": "common",
+    "text": "Cuando un oponente declare un ataque: pierde 1 PV y activa Presagio 2; después la Unidad aliada objetivo de ese ataque cambia de posición.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared",
+          "by": "opponent"
+        },
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 1,
+            "player": "self"
+          },
+          {
+            "kind": "omen",
+            "count": 2
+          },
+          {
+            "kind": "changePosition",
+            "target": {
+              "kind": "attackParticipant",
+              "role": "defender"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P08",
+    "name": "Protección Astral",
+    "type": "trick",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "common",
+    "text": "Cuando una Unidad aliada sea objetivo de un efecto enemigo: esa Unidad no puede ser destruida por ese efecto.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyTargetedByEnemyEffect"
+        },
+        "actions": [
+          {
+            "kind": "preventDestruction",
+            "target": {
+              "kind": "unit",
+              "owner": "self"
+            },
+            "scope": "thatEffect"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P09",
+    "name": "Eco del Porvenir",
+    "type": "trick",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "common",
+    "text": "Cuando una Unidad aliada sea destruida: roba 1 carta y recupera 2 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed"
+        },
+        "actions": [
+          {
+            "kind": "draw",
+            "count": 1
+          },
+          {
+            "kind": "heal",
+            "amount": 2,
+            "player": "self"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P10",
+    "name": "Plegaria Lunar",
+    "type": "spell",
+    "school": "cups",
+    "cost": 1,
+    "rarity": "common",
+    "duration": 1,
+    "text": "Duración de 1 turno propio. Recupera 3 PV. Si tienes la mitad o menos de tus PV máximos, recupera 5 PV en su lugar.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "conditions": [
+          {
+            "kind": "hpAtMost",
+            "value": 15
+          }
+        ],
+        "actions": [
+          {
+            "kind": "heal",
+            "amount": 5,
+            "player": "self"
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "conditions": [
+          {
+            "kind": "hpAbove",
+            "value": 15
+          }
+        ],
+        "actions": [
+          {
+            "kind": "heal",
+            "amount": 3,
+            "player": "self"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D00",
+    "name": "XIII · La Muerte",
+    "type": "unit",
+    "school": null,
+    "arcana": {
+      "key": "death",
+      "number": 13
+    },
+    "cost": 5,
+    "rarity": "legendary",
+    "atk": 6,
+    "def": 4,
+    "text": "Activa (1/turno): puedes destruir otra Unidad aliada; si lo haces, destruye una Unidad enemiga. Regla rota: La Muerte no se destruye por empate en un enfrentamiento.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "activated",
+          "limit": {
+            "per": "turn",
+            "times": 1
+          }
+        },
+        "optional": true,
+        "actions": [
+          {
+            "kind": "destroy",
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "excludeSource": true
+            }
+          }
+        ],
+        "thenIfDone": [
+          {
+            "kind": "destroy",
+            "target": {
+              "kind": "unit",
+              "owner": "opponent"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D01",
+    "name": "Acólito del Ocaso",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 1,
+    "rarity": "common",
+    "atk": 2,
+    "def": 1,
+    "text": "Cuando esta Unidad sea destruida (por combate o efecto): su controlador gana 1 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onDestroyed"
+        },
+        "actions": [
+          {
+            "kind": "heal",
+            "amount": 1,
+            "player": "self"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D02",
+    "name": "Segador Novicio",
+    "type": "unit",
+    "school": "wands",
+    "cost": 2,
+    "rarity": "common",
+    "atk": 3,
+    "def": 2,
+    "text": "Cuando otra Unidad aliada sea destruida, gana +1 ATQ.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed",
+          "other": true
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "permanent"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D03",
+    "name": "Portadora de Cenizas",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 3,
+    "rarity": "rare",
+    "atk": 4,
+    "def": 3,
+    "text": "Al entrar: puedes destruir otra Unidad aliada; si lo haces, roba 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "optional": true,
+        "actions": [
+          {
+            "kind": "destroy",
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "excludeSource": true
+            }
+          }
+        ],
+        "thenIfDone": [
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D04",
+    "name": "Caballero del Umbral",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 4,
+    "rarity": "epic",
+    "atk": 4,
+    "def": 5,
+    "text": "Si una Unidad fue destruida esta ronda, gana +1 DEF.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "unitDestroyedThisRound"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D05",
+    "name": "Rito de Despedida",
+    "type": "spell",
+    "school": "pentacles",
+    "cost": 2,
+    "rarity": "common",
+    "duration": 3,
+    "text": "Duración de 3 turnos propios. La primera vez por ronda que una Unidad aliada sea destruida, las demás ganan +1 ATQ.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed"
+        },
+        "conditions": [
+          {
+            "kind": "firstTimeThis",
+            "per": "round"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "all": true
+            },
+            "duration": {
+              "kind": "permanent"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D06",
+    "name": "Ciclo de Cenizas",
+    "type": "spell",
+    "school": "pentacles",
+    "cost": 4,
+    "rarity": "epic",
+    "duration": "indefinite",
+    "text": "Duración indefinida. Una vez por turno, cuando otra Unidad aliada sea destruida, puedes realizar Presagio 2.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed",
+          "other": true
+        },
+        "conditions": [
+          {
+            "kind": "firstTimeThis",
+            "per": "turn"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "omen",
+            "count": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D07",
+    "name": "Corte Final",
+    "type": "trick",
+    "school": "swords",
+    "cost": 3,
+    "rarity": "rare",
+    "text": "Cuando se declare un ataque: destruye la Unidad enemiga de coste 2 EN o menos que participe en ese enfrentamiento.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared"
+        },
+        "actions": [
+          {
+            "kind": "destroy",
+            "target": {
+              "kind": "attackParticipant",
+              "role": "either",
+              "costAtMost": 2,
+              "owner": "opponent"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D08",
+    "name": "Sacrificio Calculado",
+    "type": "trick",
+    "school": "pentacles",
+    "cost": 1,
+    "rarity": "common",
+    "text": "Cuando una Unidad aliada sea objetivo de un efecto enemigo: destruye otra Unidad aliada; si lo haces, niega ese efecto si solo tenía como objetivo a la primera Unidad.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyTargetedByEnemyEffect"
+        },
+        "actions": [
+          {
+            "kind": "destroy",
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "excludeSource": true
+            }
+          }
+        ],
+        "thenIfDone": [
+          {
+            "kind": "negate",
+            "what": "effect"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D09",
+    "name": "Polvo al Polvo",
+    "type": "trick",
+    "school": "pentacles",
+    "cost": 2,
+    "rarity": "common",
+    "text": "Cuando un oponente juegue un Hechizo: destruye un Hechizo en el campo que cueste 3 EN o menos.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onSpellPlayed",
+          "by": "opponent"
+        },
+        "actions": [
+          {
+            "kind": "destroySpell",
+            "costAtMost": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "X00",
+    "name": "XV · El Diablo",
+    "type": "unit",
+    "school": null,
+    "arcana": {
+      "key": "devil",
+      "number": 15
+    },
+    "cost": 4,
+    "rarity": "legendary",
+    "atk": 5,
+    "def": 3,
+    "text": "Activa (1/turno propio): pierde 3 PV; una Unidad aliada gana +2 ATQ hasta el final de la ronda. Automática (1/ronda): cuando otra Unidad aliada sea destruida por el efecto de una carta propia, el rival pierde 2 PV. Regla rota: mientras El Diablo esté en tu campo, cuando un ataque tuyo falla, el rival pierde la diferencia en tu lugar.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "activated",
+          "limit": {
+            "per": "turn",
+            "times": 1
+          }
+        },
+        "cost": [
+          {
+            "kind": "payHp",
+            "amount": 3
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 2,
+            "target": {
+              "kind": "unit",
+              "owner": "self"
+            },
+            "duration": {
+              "kind": "untilEndOfRound"
+            }
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed",
+          "other": true,
+          "cause": "effect",
+          "by": "self"
+        },
+        "cap": {
+          "per": "round",
+          "amount": 1
+        },
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 2,
+            "player": "opponent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "X01",
+    "name": "Siervo Encadenado",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 1,
+    "rarity": "common",
+    "atk": 2,
+    "def": 1,
+    "text": "Automática: cuando esta Unidad sea destruida por el efecto de una carta propia, el rival pierde 1 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onDestroyed",
+          "cause": "effect",
+          "by": "self"
+        },
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 1,
+            "player": "opponent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "X02",
+    "name": "Tentadora Carmesí",
+    "type": "unit",
+    "school": "wands",
+    "cost": 2,
+    "rarity": "common",
+    "atk": 3,
+    "def": 2,
+    "text": "Al entrar: puedes perder 2 PV; si lo haces, roba 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "optional": true,
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 2,
+            "player": "self"
+          }
+        ],
+        "thenIfDone": [
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "X03",
+    "name": "Verdugo Infernal",
+    "type": "unit",
+    "school": "wands",
+    "cost": 3,
+    "rarity": "rare",
+    "atk": 4,
+    "def": 3,
+    "text": "Activa (1/turno propio): puedes destruir otra Unidad aliada; si lo haces, esta Unidad gana +2 ATQ hasta el final de la ronda.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "activated",
+          "limit": {
+            "per": "turn",
+            "times": 1
+          }
+        },
+        "optional": true,
+        "actions": [
+          {
+            "kind": "destroy",
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "excludeSource": true
+            }
+          }
+        ],
+        "thenIfDone": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 2,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "untilEndOfRound"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "X04",
+    "name": "Cobradora de Almas",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 4,
+    "rarity": "epic",
+    "atk": 5,
+    "def": 4,
+    "text": "Al entrar: puedes destruir otra Unidad aliada; si lo haces, el rival pierde 2 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "optional": true,
+        "actions": [
+          {
+            "kind": "destroy",
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "excludeSource": true
+            }
+          }
+        ],
+        "thenIfDone": [
+          {
+            "kind": "damagePlayer",
+            "amount": 2,
+            "player": "opponent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "X05",
+    "name": "Contrato Carmesí",
+    "type": "spell",
+    "school": "pentacles",
+    "cost": 2,
+    "rarity": "common",
+    "duration": 3,
+    "text": "Duración de 3 turnos propios. Automática (1/ronda): la primera vez que una Unidad aliada sea destruida por el efecto de una carta propia, roba 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed",
+          "cause": "effect",
+          "by": "self"
+        },
+        "conditions": [
+          {
+            "kind": "firstTimeThis",
+            "per": "round"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "X06",
+    "name": "Altar de las Cadenas",
+    "type": "spell",
+    "school": "pentacles",
+    "cost": 4,
+    "rarity": "epic",
+    "duration": "indefinite",
+    "text": "Duración indefinida. Automática (1/ronda): la primera vez que pagues PV por el coste de una habilidad, el rival pierde 1 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onHpPaidAsAbilityCost",
+          "by": "self"
+        },
+        "conditions": [
+          {
+            "kind": "firstTimeThis",
+            "per": "round"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 1,
+            "player": "opponent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "X07",
+    "name": "Poder Prohibido",
+    "type": "trick",
+    "school": "wands",
+    "cost": 1,
+    "rarity": "common",
+    "text": "Cuando declares un ataque con una Unidad aliada: pierde 2 PV; esa Unidad gana +3 ATQ durante ese enfrentamiento.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared",
+          "by": "ally"
+        },
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 2,
+            "player": "self"
+          },
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 3,
+            "target": {
+              "kind": "attackParticipant",
+              "role": "attacker"
+            },
+            "duration": {
+              "kind": "thisCombat"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "X08",
+    "name": "Precio del Silencio",
+    "type": "trick",
+    "school": "swords",
+    "cost": 2,
+    "rarity": "common",
+    "text": "Cuando un oponente active una habilidad activa de Unidad: pierde 3 PV; niega esa habilidad.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onActiveAbilityActivated",
+          "by": "opponent"
+        },
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 3,
+            "player": "self"
+          },
+          {
+            "kind": "negate",
+            "what": "activeAbility"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "X09",
+    "name": "Último Tributo",
+    "type": "trick",
+    "school": "pentacles",
+    "cost": 2,
+    "rarity": "common",
+    "text": "Cuando una Unidad aliada sea destruida por el efecto de una carta propia: el rival pierde 2 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed",
+          "cause": "effect",
+          "by": "self"
+        },
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 2,
+            "player": "opponent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L00",
+    "name": "VI · Los Enamorados",
+    "type": "unit",
+    "school": null,
+    "arcana": {
+      "key": "lovers",
+      "number": 6
+    },
+    "cost": 4,
+    "rarity": "legendary",
+    "atk": 4,
+    "def": 5,
+    "text": "Los Enamorados siempre cuentan como Unidad emparejada. Tus Unidades emparejadas ganan +1 ATQ y +1 DEF. Activa (1/turno): una Unidad aliada emparejada gana +2 ATQ hasta el final de la ronda. Regla rota: mientras Los Enamorados estén en tu campo, cada Unidad emparejada puede atacar dos veces por Batalla.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "paired": true
+            },
+            "duration": {
+              "kind": "whileInPlay"
+            }
+          },
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "paired": true
+            },
+            "duration": {
+              "kind": "whileInPlay"
+            }
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "activated",
+          "limit": {
+            "per": "turn",
+            "times": 1
+          }
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 2,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "paired": true
+            },
+            "duration": {
+              "kind": "untilEndOfRound"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L01",
+    "name": "Escudero Leal",
+    "type": "unit",
+    "school": "wands",
+    "cost": 1,
+    "rarity": "common",
+    "atk": 2,
+    "def": 1,
+    "text": "Pareja: Doncella del Alba. Emparejado: la Unidad gana +1 ATQ.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "paired"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      }
+    ],
+    "partner": "L02"
+  },
+  {
+    "id": "L02",
+    "name": "Doncella del Alba",
+    "type": "unit",
+    "school": "cups",
+    "cost": 1,
+    "rarity": "common",
+    "atk": 1,
+    "def": 3,
+    "text": "Pareja: Escudero Leal. Al emparejar: recupera 2 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onPaired"
+        },
+        "actions": [
+          {
+            "kind": "heal",
+            "amount": 2,
+            "player": "self"
+          }
+        ]
+      }
+    ],
+    "partner": "L01"
+  },
+  {
+    "id": "L03",
+    "name": "Bardo Errante",
+    "type": "unit",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "common",
+    "atk": 2,
+    "def": 3,
+    "text": "Pareja: Bailarina de Lunas. Al emparejar: roba 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onPaired"
+        },
+        "actions": [
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      }
+    ],
+    "partner": "L04"
+  },
+  {
+    "id": "L04",
+    "name": "Bailarina de Lunas",
+    "type": "unit",
+    "school": "wands",
+    "cost": 2,
+    "rarity": "common",
+    "atk": 3,
+    "def": 2,
+    "text": "Pareja: Bardo Errante. Emparejada: la Unidad gana +1 ATQ y +1 DEF.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "paired"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          },
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      }
+    ],
+    "partner": "L03"
+  },
+  {
+    "id": "L05",
+    "name": "Caballero Juramentado",
+    "type": "unit",
+    "school": "swords",
+    "cost": 3,
+    "rarity": "rare",
+    "atk": 4,
+    "def": 3,
+    "text": "Pareja: Dama del Lago. Emparejado: la Unidad gana +2 ATQ.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "paired"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 2,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      }
+    ],
+    "partner": "L06"
+  },
+  {
+    "id": "L06",
+    "name": "Dama del Lago",
+    "type": "unit",
+    "school": "cups",
+    "cost": 3,
+    "rarity": "rare",
+    "atk": 2,
+    "def": 5,
+    "text": "Pareja: Caballero Juramentado. Al entrar o al emparejar: Presagio 2. Emparejada: la Unidad gana +2 DEF.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "omen",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "onPaired"
+        },
+        "actions": [
+          {
+            "kind": "omen",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "paired"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 2,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      }
+    ],
+    "partner": "L05"
+  },
+  {
+    "id": "L07",
+    "name": "Juramento Eterno",
+    "type": "spell",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "common",
+    "duration": 3,
+    "text": "Duración 3 rondas. Tus Unidades emparejadas ganan +1 DEF. Cuando emparejes una Unidad, recupera 1 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "paired": true
+            },
+            "duration": {
+              "kind": "whileInPlay"
+            }
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "onAllyPaired"
+        },
+        "actions": [
+          {
+            "kind": "heal",
+            "amount": 1,
+            "player": "self"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L08",
+    "name": "Lazo del Destino",
+    "type": "spell",
+    "school": "wands",
+    "cost": 3,
+    "rarity": "epic",
+    "duration": 2,
+    "text": "Duración 2 rondas. Al jugarlo: roba 1 carta. Tus Unidades emparejadas ganan +1 ATQ. La primera vez por ronda que emparejes una Unidad, roba 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "paired": true
+            },
+            "duration": {
+              "kind": "whileInPlay"
+            }
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "onAllyPaired"
+        },
+        "conditions": [
+          {
+            "kind": "firstTimeThis",
+            "per": "round"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L09",
+    "name": "Promesa de Protección",
+    "type": "trick",
+    "school": "cups",
+    "cost": 1,
+    "rarity": "common",
+    "text": "Cuando un oponente declare un ataque contra una Unidad aliada: esa Unidad gana +2 ATQ y +2 DEF en este enfrentamiento (+3 ATQ y +3 DEF si está emparejada).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared",
+          "by": "opponent"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 2,
+            "target": {
+              "kind": "attackParticipant",
+              "role": "defender"
+            },
+            "duration": {
+              "kind": "thisCombat"
+            }
+          },
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 2,
+            "target": {
+              "kind": "attackParticipant",
+              "role": "defender"
+            },
+            "duration": {
+              "kind": "thisCombat"
+            }
+          },
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "attackParticipant",
+              "role": "defender",
+              "paired": true
+            },
+            "duration": {
+              "kind": "thisCombat"
+            }
+          },
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "attackParticipant",
+              "role": "defender",
+              "paired": true
+            },
+            "duration": {
+              "kind": "thisCombat"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L10",
+    "name": "Corazón Roto",
+    "type": "trick",
+    "school": "wands",
+    "cost": 2,
+    "rarity": "rare",
+    "text": "Cuando una Unidad aliada sea destruida: el rival pierde 2 PV y robas 1 carta (2 cartas si la Unidad destruida estaba emparejada).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed"
+        },
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 2,
+            "player": "opponent"
+          },
+          {
+            "kind": "draw",
+            "count": 1
+          },
+          {
+            "kind": "draw",
+            "count": 1,
+            "per": "victimPaired"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E00",
+    "name": "IV · El Emperador",
+    "type": "unit",
+    "school": null,
+    "arcana": {
+      "key": "emperor",
+      "number": 4
+    },
+    "cost": 5,
+    "rarity": "legendary",
+    "atk": 4,
+    "def": 5,
+    "text": "Jerarquía: mientras tus Unidades estén ordenadas de mayor a menor coste (de izquierda a derecha), tus demás Unidades ganan +1 ATQ. Activa (1/turno): ordena tus Unidades de mayor a menor coste. Regla rota: El Emperador no puede ser atacado mientras controles otra Unidad.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "hierarchy"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "excludeSource": true
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "activated",
+          "limit": {
+            "per": "turn",
+            "times": 1
+          }
+        },
+        "actions": [
+          {
+            "kind": "sortUnits"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E01",
+    "name": "Heraldo Imperial",
+    "type": "unit",
+    "school": "swords",
+    "cost": 1,
+    "rarity": "common",
+    "atk": 1,
+    "def": 2,
+    "text": "Al entrar: si hay Jerarquía, roba 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "conditions": [
+          {
+            "kind": "hierarchy"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E02",
+    "name": "Legionario",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 2,
+    "rarity": "common",
+    "atk": 1,
+    "def": 3,
+    "text": "Gana +1 ATQ por cada Unidad aliada de menor coste.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            },
+            "per": "lowerCostAlly"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E03",
+    "name": "Centurión",
+    "type": "unit",
+    "school": "swords",
+    "cost": 3,
+    "rarity": "common",
+    "atk": 2,
+    "def": 4,
+    "text": "Gana +1 DEF por cada Unidad aliada de menor coste. Si es tu Líder, gana +1 ATQ.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            },
+            "per": "lowerCostAlly"
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "isLeader"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E04",
+    "name": "Pretor de Hierro",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 4,
+    "rarity": "rare",
+    "atk": 4,
+    "def": 5,
+    "text": "Al entrar: si hay Jerarquía, una Unidad aliada gana +1 DEF permanente.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "conditions": [
+          {
+            "kind": "hierarchy"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self"
+            },
+            "duration": {
+              "kind": "permanent"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E05",
+    "name": "Mariscal del Trono",
+    "type": "unit",
+    "school": "swords",
+    "cost": 5,
+    "rarity": "epic",
+    "atk": 5,
+    "def": 4,
+    "text": "Si es tu Líder, tus demás Unidades ganan +1 DEF.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "isLeader"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "excludeSource": true
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E06",
+    "name": "Decreto Imperial",
+    "type": "spell",
+    "school": "pentacles",
+    "cost": 2,
+    "rarity": "common",
+    "duration": 2,
+    "text": "Duración de 2 turnos propios. Mientras haya Jerarquía, tus Unidades ganan +1 DEF.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "hierarchy"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E07",
+    "name": "Orden de Batalla",
+    "type": "spell",
+    "school": "swords",
+    "cost": 1,
+    "rarity": "common",
+    "duration": 1,
+    "text": "Duración de 1 turno propio. Ordena tus Unidades de mayor a menor coste. Tu Líder gana +2 ATQ hasta el final de la ronda.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "sortUnits"
+          },
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 2,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "leader": true
+            },
+            "duration": {
+              "kind": "untilEndOfRound"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E08",
+    "name": "Guardia Pretoriana",
+    "type": "trick",
+    "school": "pentacles",
+    "cost": 2,
+    "rarity": "common",
+    "text": "Cuando un oponente declare un ataque contra una Unidad aliada: si hay Jerarquía, esa Unidad gana +2 ATQ y +2 DEF en este enfrentamiento.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared",
+          "by": "opponent"
+        },
+        "conditions": [
+          {
+            "kind": "hierarchy"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 2,
+            "target": {
+              "kind": "attackParticipant",
+              "role": "defender"
+            },
+            "duration": {
+              "kind": "thisCombat"
+            }
+          },
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 2,
+            "target": {
+              "kind": "attackParticipant",
+              "role": "defender"
+            },
+            "duration": {
+              "kind": "thisCombat"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E09",
+    "name": "Edicto de Sumisión",
+    "type": "trick",
+    "school": "swords",
+    "cost": 2,
+    "rarity": "rare",
+    "text": "Cuando un oponente declare un ataque: si hay Jerarquía, la Unidad atacante recibe −2 ATQ en este enfrentamiento (mínimo 0).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared",
+          "by": "opponent"
+        },
+        "conditions": [
+          {
+            "kind": "hierarchy"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": -2,
+            "target": {
+              "kind": "attackParticipant",
+              "role": "attacker",
+              "owner": "opponent"
+            },
+            "duration": {
+              "kind": "thisCombat"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E10",
+    "name": "Coronación",
+    "type": "spell",
+    "school": "swords",
+    "cost": 3,
+    "rarity": "rare",
+    "duration": 3,
+    "text": "Duración de 3 turnos propios. Tu Líder gana +1 ATQ y +1 DEF.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "leader": true
+            },
+            "duration": {
+              "kind": "whileInPlay"
+            }
+          },
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "leader": true
+            },
+            "duration": {
+              "kind": "whileInPlay"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z90",
+    "name": "Retoño",
+    "type": "unit",
+    "school": "cups",
+    "cost": 1,
+    "rarity": "common",
+    "atk": 1,
+    "def": 2,
+    "token": true,
+    "text": "Ficha de La Emperatriz: entra en DEF y desaparece al salir del campo."
+  },
+  {
+    "id": "Z00",
+    "name": "III · La Emperatriz",
+    "type": "unit",
+    "school": null,
+    "arcana": {
+      "key": "empress",
+      "number": 3
+    },
+    "cost": 3,
+    "rarity": "legendary",
+    "atk": 3,
+    "def": 5,
+    "text": "Cada vez que una Unidad aliada de coste 1 o menos sea destruida, tus Unidades en el campo de coste 2 o menos ganan +1 ATQ permanentemente. Activa (1/turno): invoca un Retoño (1/2, en DEF). Regla rota: mientras La Emperatriz esté en tu campo, no pierdes PV en enfrentamientos entre Unidades.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed",
+          "costAtMost": 1
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "costAtMost": 2,
+              "all": true
+            },
+            "duration": {
+              "kind": "permanent"
+            }
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "activated",
+          "limit": {
+            "per": "turn",
+            "times": 1
+          }
+        },
+        "actions": [
+          {
+            "kind": "summonToken",
+            "cardId": "Z90",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z01",
+    "name": "Larva Voraz",
+    "type": "unit",
+    "school": "wands",
+    "cost": 1,
+    "rarity": "common",
+    "atk": 0,
+    "def": 2,
+    "text": "Al entrar: invoca un Retoño (1/2, en DEF).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "summonToken",
+            "cardId": "Z90",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z02",
+    "name": "Esporas Errantes",
+    "type": "unit",
+    "school": "cups",
+    "cost": 1,
+    "rarity": "common",
+    "atk": 2,
+    "def": 1,
+    "text": "Cuando esta Unidad sea destruida: invoca un Retoño (1/2, en DEF).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onDestroyed"
+        },
+        "actions": [
+          {
+            "kind": "summonToken",
+            "cardId": "Z90",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z03",
+    "name": "Madre de la Camada",
+    "type": "unit",
+    "school": "cups",
+    "cost": 3,
+    "rarity": "rare",
+    "atk": 2,
+    "def": 4,
+    "text": "Al entrar: invoca dos Retoños (1/2, en DEF).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "summonToken",
+            "cardId": "Z90",
+            "count": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z04",
+    "name": "Acechador de la Colmena",
+    "type": "unit",
+    "school": "wands",
+    "cost": 2,
+    "rarity": "common",
+    "atk": 2,
+    "def": 3,
+    "text": "Gana +1 ATQ por cada otra Unidad aliada.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            },
+            "per": "allyUnit"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z05",
+    "name": "Reina Parásita",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 4,
+    "rarity": "epic",
+    "atk": 3,
+    "def": 5,
+    "text": "Una vez por ronda, cuando otra Unidad aliada sea destruida: invoca un Retoño (1/2, en DEF).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed",
+          "other": true
+        },
+        "conditions": [
+          {
+            "kind": "firstTimeThis",
+            "per": "round"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "summonToken",
+            "cardId": "Z90",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z06",
+    "name": "Plaga Incesante",
+    "type": "spell",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "common",
+    "duration": 3,
+    "text": "Duración de 3 turnos propios. Al inicio de tu turno: invoca un Retoño (1/2, en DEF).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onTurnStart",
+          "whose": "self"
+        },
+        "actions": [
+          {
+            "kind": "summonToken",
+            "cardId": "Z90",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z07",
+    "name": "Nido Rebosante",
+    "type": "spell",
+    "school": "wands",
+    "cost": 3,
+    "rarity": "rare",
+    "duration": "indefinite",
+    "text": "Duración indefinida. Tus Unidades de coste 1 o menos ganan +1 ATQ y +1 DEF.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "costAtMost": 1
+            },
+            "duration": {
+              "kind": "whileInPlay"
+            }
+          },
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "costAtMost": 1
+            },
+            "duration": {
+              "kind": "whileInPlay"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z08",
+    "name": "Marea de Crías",
+    "type": "trick",
+    "school": "cups",
+    "cost": 1,
+    "rarity": "common",
+    "text": "Cuando una Unidad aliada sea destruida: invoca dos Retoños (1/2, en DEF).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed"
+        },
+        "actions": [
+          {
+            "kind": "summonToken",
+            "cardId": "Z90",
+            "count": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z09",
+    "name": "Frenesí de la Colmena",
+    "type": "trick",
+    "school": "wands",
+    "cost": 2,
+    "rarity": "common",
+    "text": "Cuando declares un ataque con una Unidad aliada: esa Unidad gana +1 ATQ por cada Unidad aliada en el campo (incluida ella) en este enfrentamiento.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared",
+          "by": "ally"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "attackParticipant",
+              "role": "attacker"
+            },
+            "duration": {
+              "kind": "thisCombat"
+            },
+            "per": "allyUnit"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z10",
+    "name": "Semillero",
+    "type": "spell",
+    "school": "pentacles",
+    "cost": 2,
+    "rarity": "common",
+    "duration": 1,
+    "text": "Duración de 1 turno propio. Invoca dos Retoños (1/2, en DEF).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "summonToken",
+            "cardId": "Z90",
+            "count": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R00",
+    "name": "X · La Rueda de la Fortuna",
+    "type": "unit",
+    "school": null,
+    "arcana": {
+      "key": "fortune",
+      "number": 10
+    },
+    "cost": 3,
+    "rarity": "legendary",
+    "atk": 4,
+    "def": 2,
+    "text": "Activa (1/turno): lanza un dado. 1–2: pierdes 2 PV. 3–5: roba 1 carta. 6: el rival pierde 3 PV y esta Unidad gana +3 ATQ permanentemente. Regla rota: mientras La Rueda esté en tu campo, cuando saques un 1 en un dado, vuelve a lanzarlo.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "activated",
+          "limit": {
+            "per": "turn",
+            "times": 1
+          }
+        },
+        "actions": [
+          {
+            "kind": "roll",
+            "sides": 6,
+            "outcomes": [
+              {
+                "min": 1,
+                "actions": [
+                  {
+                    "kind": "damagePlayer",
+                    "amount": 2,
+                    "player": "self"
+                  }
+                ]
+              },
+              {
+                "min": 3,
+                "actions": [
+                  {
+                    "kind": "draw",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "min": 6,
+                "actions": [
+                  {
+                    "kind": "damagePlayer",
+                    "amount": 3,
+                    "player": "opponent"
+                  },
+                  {
+                    "kind": "modifyStat",
+                    "stat": "atk",
+                    "amount": 3,
+                    "target": {
+                      "kind": "self"
+                    },
+                    "duration": {
+                      "kind": "permanent"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R01",
+    "name": "Tahúr Callejero",
+    "type": "unit",
+    "school": "wands",
+    "cost": 1,
+    "rarity": "common",
+    "atk": 2,
+    "def": 0,
+    "text": "Al entrar: lanza un dado. 1–2: +1 ATQ; 3–4: +2 ATQ; 5–6: +3 ATQ (permanente).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "roll",
+            "sides": 6,
+            "outcomes": [
+              {
+                "min": 1,
+                "actions": [
+                  {
+                    "kind": "modifyStat",
+                    "stat": "atk",
+                    "amount": 1,
+                    "target": {
+                      "kind": "self"
+                    },
+                    "duration": {
+                      "kind": "permanent"
+                    }
+                  }
+                ]
+              },
+              {
+                "min": 3,
+                "actions": [
+                  {
+                    "kind": "modifyStat",
+                    "stat": "atk",
+                    "amount": 2,
+                    "target": {
+                      "kind": "self"
+                    },
+                    "duration": {
+                      "kind": "permanent"
+                    }
+                  }
+                ]
+              },
+              {
+                "min": 5,
+                "actions": [
+                  {
+                    "kind": "modifyStat",
+                    "stat": "atk",
+                    "amount": 3,
+                    "target": {
+                      "kind": "self"
+                    },
+                    "duration": {
+                      "kind": "permanent"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R02",
+    "name": "Jugadora de Dados",
+    "type": "unit",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "common",
+    "atk": 1,
+    "def": 3,
+    "text": "Al entrar: lanza un dado; gana +1 DEF permanente por cada punto.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "roll",
+            "sides": 6,
+            "outcomes": [
+              {
+                "min": 1,
+                "actions": [
+                  {
+                    "kind": "modifyStat",
+                    "stat": "def",
+                    "amount": 1,
+                    "target": {
+                      "kind": "self"
+                    },
+                    "duration": {
+                      "kind": "permanent"
+                    },
+                    "per": "roll"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R03",
+    "name": "Crupier Sombrío",
+    "type": "unit",
+    "school": "swords",
+    "cost": 2,
+    "rarity": "common",
+    "atk": 3,
+    "def": 2,
+    "text": "Activa (1/turno): lanza una moneda. Cara: roba 1 carta. Cruz: descarta 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "activated",
+          "limit": {
+            "per": "turn",
+            "times": 1
+          }
+        },
+        "actions": [
+          {
+            "kind": "roll",
+            "sides": 2,
+            "outcomes": [
+              {
+                "min": 1,
+                "actions": [
+                  {
+                    "kind": "discard",
+                    "count": 1
+                  }
+                ]
+              },
+              {
+                "min": 2,
+                "actions": [
+                  {
+                    "kind": "draw",
+                    "count": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R04",
+    "name": "Bandido de la Suerte",
+    "type": "unit",
+    "school": "wands",
+    "cost": 3,
+    "rarity": "rare",
+    "atk": 4,
+    "def": 3,
+    "text": "Cuando una Unidad aliada ataque: lanza un dado; con 5 o más, esa Unidad gana +2 ATQ en este enfrentamiento.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared",
+          "by": "ally"
+        },
+        "actions": [
+          {
+            "kind": "roll",
+            "sides": 6,
+            "outcomes": [
+              {
+                "min": 5,
+                "actions": [
+                  {
+                    "kind": "modifyStat",
+                    "stat": "atk",
+                    "amount": 2,
+                    "target": {
+                      "kind": "attackParticipant",
+                      "role": "attacker"
+                    },
+                    "duration": {
+                      "kind": "thisCombat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R05",
+    "name": "Magnate del Azar",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 5,
+    "rarity": "epic",
+    "atk": 3,
+    "def": 1,
+    "text": "Al entrar: lanza un dado; gana +1 ATQ y +1 DEF permanentes por cada punto.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "roll",
+            "sides": 6,
+            "outcomes": [
+              {
+                "min": 1,
+                "actions": [
+                  {
+                    "kind": "modifyStat",
+                    "stat": "atk",
+                    "amount": 1,
+                    "target": {
+                      "kind": "self"
+                    },
+                    "duration": {
+                      "kind": "permanent"
+                    },
+                    "per": "roll"
+                  },
+                  {
+                    "kind": "modifyStat",
+                    "stat": "def",
+                    "amount": 1,
+                    "target": {
+                      "kind": "self"
+                    },
+                    "duration": {
+                      "kind": "permanent"
+                    },
+                    "per": "roll"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R06",
+    "name": "Mesa de Juego",
+    "type": "spell",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "common",
+    "duration": 3,
+    "text": "Duración de 3 turnos propios. Al inicio de tu turno: lanza un dado. 1: pierdes 1 PV. 4–6: recupera 2 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onTurnStart",
+          "whose": "self"
+        },
+        "actions": [
+          {
+            "kind": "roll",
+            "sides": 6,
+            "outcomes": [
+              {
+                "min": 1,
+                "actions": [
+                  {
+                    "kind": "damagePlayer",
+                    "amount": 1,
+                    "player": "self"
+                  }
+                ]
+              },
+              {
+                "min": 2,
+                "actions": []
+              },
+              {
+                "min": 4,
+                "actions": [
+                  {
+                    "kind": "heal",
+                    "amount": 2,
+                    "player": "self"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R07",
+    "name": "Ruleta del Destino",
+    "type": "spell",
+    "school": "swords",
+    "cost": 3,
+    "rarity": "rare",
+    "duration": 1,
+    "text": "Duración de 1 turno propio. Lanza un dado: el rival pierde tantos PV como el resultado. Si sale 1, tú pierdes 3 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "roll",
+            "sides": 6,
+            "outcomes": [
+              {
+                "min": 1,
+                "actions": [
+                  {
+                    "kind": "damagePlayer",
+                    "amount": 1,
+                    "player": "opponent",
+                    "per": "roll"
+                  },
+                  {
+                    "kind": "damagePlayer",
+                    "amount": 3,
+                    "player": "self"
+                  }
+                ]
+              },
+              {
+                "min": 2,
+                "actions": [
+                  {
+                    "kind": "damagePlayer",
+                    "amount": 1,
+                    "player": "opponent",
+                    "per": "roll"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R08",
+    "name": "Doble o Nada",
+    "type": "trick",
+    "school": "wands",
+    "cost": 1,
+    "rarity": "common",
+    "text": "Cuando declares un ataque con una Unidad aliada: lanza una moneda. Cara: esa Unidad gana +4 ATQ en este enfrentamiento. Cruz: recibe −2 ATQ.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared",
+          "by": "ally"
+        },
+        "actions": [
+          {
+            "kind": "roll",
+            "sides": 2,
+            "outcomes": [
+              {
+                "min": 1,
+                "actions": [
+                  {
+                    "kind": "modifyStat",
+                    "stat": "atk",
+                    "amount": -2,
+                    "target": {
+                      "kind": "attackParticipant",
+                      "role": "attacker"
+                    },
+                    "duration": {
+                      "kind": "thisCombat"
+                    }
+                  }
+                ]
+              },
+              {
+                "min": 2,
+                "actions": [
+                  {
+                    "kind": "modifyStat",
+                    "stat": "atk",
+                    "amount": 4,
+                    "target": {
+                      "kind": "attackParticipant",
+                      "role": "attacker"
+                    },
+                    "duration": {
+                      "kind": "thisCombat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R09",
+    "name": "Trébol de Cuatro Hojas",
+    "type": "trick",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "common",
+    "text": "Cuando una Unidad aliada fuera a ser destruida por un enfrentamiento: lanza un dado; con 3 o más, no es destruida (el daño a PV se aplica normalmente).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyAboutToBeDestroyed",
+          "cause": "combat"
+        },
+        "actions": [
+          {
+            "kind": "roll",
+            "sides": 6,
+            "outcomes": [
+              {
+                "min": 3,
+                "actions": [
+                  {
+                    "kind": "preventDestruction",
+                    "target": {
+                      "kind": "attackParticipant",
+                      "role": "either"
+                    },
+                    "scope": "combat"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R10",
+    "name": "Moneda Trucada",
+    "type": "spell",
+    "school": "pentacles",
+    "cost": 1,
+    "rarity": "rare",
+    "duration": "indefinite",
+    "text": "Duración indefinida. Cada vez que saques 5 o más en un dado, el rival pierde 1 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onRoll",
+          "atLeast": 5
+        },
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 1,
+            "player": "opponent"
+          }
+        ]
+      }
+    ]
+  }
+]

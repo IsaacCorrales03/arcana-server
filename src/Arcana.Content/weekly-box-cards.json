@@ -1,0 +1,57 @@
+[
+  {
+    "id": "F10", "name": "Cartógrafa del Azar", "type": "unit", "school": "wands", "cost": 2, "rarity": "common", "atk": 2, "def": 3,
+    "text": "Al entrar: puedes descartar 1 carta. Si lo haces, activa Presagio 2.",
+    "effects": [{ "trigger": { "kind": "onEnter" }, "optional": true, "actions": [{ "kind": "discard", "count": 1 }], "thenIfDone": [{ "kind": "omen", "count": 2 }] }]
+  },
+  {
+    "id": "M10", "name": "Custodio del Sello", "type": "unit", "school": "swords", "cost": 2, "rarity": "common", "atk": 2, "def": 2,
+    "text": "Al entrar: si controlas un Hechizo, gana +2 DEF hasta el final de la ronda.",
+    "effects": [{ "trigger": { "kind": "onEnter" }, "conditions": [{ "kind": "controlsSpell" }], "actions": [{ "kind": "modifyStat", "stat": "def", "amount": 2, "target": { "kind": "self" }, "duration": { "kind": "untilEndOfRound" } }] }]
+  },
+  {
+    "id": "D10", "name": "Campanera del Sepulcro", "type": "unit", "school": "pentacles", "cost": 3, "rarity": "rare", "atk": 3, "def": 3,
+    "text": "Al entrar: puedes destruir otra Unidad aliada. Si lo haces, recupera 2 PV.",
+    "effects": [{ "trigger": { "kind": "onEnter" }, "optional": true, "actions": [{ "kind": "destroy", "target": { "kind": "unit", "owner": "self", "excludeSource": true } }], "thenIfDone": [{ "kind": "heal", "amount": 2, "player": "self" }] }]
+  },
+  {
+    "id": "X10", "name": "Escribana del Pacto", "type": "unit", "school": "pentacles", "cost": 2, "rarity": "common", "atk": 2, "def": 2,
+    "text": "Al entrar: puedes perder 2 PV. Si lo haces, gana +2 ATQ hasta el final de la ronda.",
+    "effects": [{ "trigger": { "kind": "onEnter" }, "optional": true, "actions": [{ "kind": "damagePlayer", "amount": 2, "player": "self" }], "thenIfDone": [{ "kind": "modifyStat", "stat": "atk", "amount": 2, "target": { "kind": "self" }, "duration": { "kind": "untilEndOfRound" } }] }]
+  },
+  {
+    "id": "E11", "name": "Portaestandarte de Bronce", "type": "unit", "school": "swords", "cost": 3, "rarity": "common", "atk": 3, "def": 3,
+    "text": "Al entrar: si hay Jerarquía, tu Líder gana +1 ATQ hasta el final de la ronda.",
+    "effects": [{ "trigger": { "kind": "onEnter" }, "conditions": [{ "kind": "hierarchy" }], "actions": [{ "kind": "modifyStat", "stat": "atk", "amount": 1, "target": { "kind": "leader", "owner": "self" }, "duration": { "kind": "untilEndOfRound" } }] }]
+  },
+  {
+    "id": "L11", "name": "Tejedora de Promesas", "type": "unit", "school": "cups", "cost": 2, "rarity": "common", "atk": 1, "def": 4,
+    "text": "Al entrar: recupera 2 PV.",
+    "effects": [{ "trigger": { "kind": "onEnter" }, "actions": [{ "kind": "heal", "amount": 2, "player": "self" }] }]
+  },
+  {
+    "id": "R11", "name": "Crupier del Alba", "type": "unit", "school": "cups", "cost": 3, "rarity": "rare", "atk": 3, "def": 3,
+    "text": "Al entrar: lanza un dado. Si sale 4 o más, gana +1 ATQ y +1 DEF hasta el final de la ronda.",
+    "effects": [{ "trigger": { "kind": "onEnter" }, "actions": [{ "kind": "roll", "sides": 6, "outcomes": [{ "min": 4, "actions": [
+      { "kind": "modifyStat", "stat": "atk", "amount": 1, "target": { "kind": "self" }, "duration": { "kind": "untilEndOfRound" } },
+      { "kind": "modifyStat", "stat": "def", "amount": 1, "target": { "kind": "self" }, "duration": { "kind": "untilEndOfRound" } }
+    ] }] }] }]
+  },
+  {
+    "id": "Z11", "name": "Vigía del Semillero", "type": "unit", "school": "cups", "cost": 2, "rarity": "common", "atk": 1, "def": 3,
+    "text": "Al entrar: invoca un Retoño (1/2, en DEF).",
+    "effects": [{ "trigger": { "kind": "onEnter" }, "actions": [{ "kind": "summonToken", "cardId": "Z90", "count": 1 }] }]
+  },
+  {"id": "C00", "name": "VII · El Carro", "type": "unit", "school": null, "arcana": {"key": "chariot", "number": 7}, "cost": 4, "rarity": "legendary", "atk": 5, "def": 4, "text": "Activa (1/turno): tus Unidades ganan +1 ATQ hasta el final de la ronda. Regla rota: mientras El Carro esté en tu campo, cuando una Unidad aliada destruya en combate a una Unidad en DEF, el rival pierde la diferencia entre su ATQ y esa DEF (Arrollar).", "effects": [{"trigger": {"kind": "activated", "limit": {"per": "turn", "times": 1}}, "actions": [{"kind": "modifyStat", "stat": "atk", "amount": 1, "target": {"kind": "unit", "owner": "self", "all": true}, "duration": {"kind": "untilEndOfRound"}}]}]},
+  {"id": "C01", "name": "Escudero de Carga", "type": "unit", "school": "wands", "cost": 1, "rarity": "common", "atk": 2, "def": 1, "text": "Cuando otra Unidad aliada declare un ataque, esa Unidad gana +1 ATQ en este enfrentamiento.", "effects": [{"trigger": {"kind": "onAttackDeclared", "by": "otherAlly"}, "actions": [{"kind": "modifyStat", "stat": "atk", "amount": 1, "target": {"kind": "attackParticipant", "role": "attacker"}, "duration": {"kind": "thisCombat"}}]}]},
+  {"id": "C02", "name": "Corcel de Guerra", "type": "unit", "school": "wands", "cost": 2, "rarity": "common", "atk": 3, "def": 2, "text": "Al entrar: tus demás Unidades ganan +1 ATQ hasta el final de la ronda.", "effects": [{"trigger": {"kind": "onEnter"}, "actions": [{"kind": "modifyStat", "stat": "atk", "amount": 1, "target": {"kind": "unit", "owner": "self", "excludeSource": true, "all": true}, "duration": {"kind": "untilEndOfRound"}}]}]},
+  {"id": "C03", "name": "Lancero de la Falange", "type": "unit", "school": "swords", "cost": 3, "rarity": "rare", "atk": 3, "def": 3, "text": "Gana +1 ATQ por cada otra Unidad aliada.", "effects": [{"trigger": {"kind": "static"}, "actions": [{"kind": "modifyStat", "stat": "atk", "amount": 1, "target": {"kind": "self"}, "duration": {"kind": "whileCondition"}, "per": "allyUnit"}]}]},
+  {"id": "C04", "name": "Coloso de Bronce", "type": "unit", "school": "pentacles", "cost": 4, "rarity": "epic", "atk": 6, "def": 5, "text": "Al entrar: pierdes 2 PV.", "effects": [{"trigger": {"kind": "onEnter"}, "actions": [{"kind": "damagePlayer", "amount": 2, "player": "self"}]}]},
+  {"id": "C05", "name": "Carga Unida", "type": "trick", "school": "wands", "cost": 2, "rarity": "common", "text": "Cuando declares un ataque con una Unidad aliada: esa Unidad gana +2 ATQ en este enfrentamiento y tus demás Unidades ganan +1 ATQ hasta el final de la ronda.", "effects": [{"trigger": {"kind": "onAttackDeclared", "by": "ally"}, "actions": [{"kind": "modifyStat", "stat": "atk", "amount": 2, "target": {"kind": "attackParticipant", "role": "attacker"}, "duration": {"kind": "thisCombat"}}, {"kind": "modifyStat", "stat": "atk", "amount": 1, "target": {"kind": "unit", "owner": "self", "all": true, "excludeAttackTarget": true}, "duration": {"kind": "untilEndOfRound"}}]}]},
+  {"id": "C06", "name": "Ruedas de Hierro", "type": "spell", "school": "pentacles", "cost": 2, "rarity": "common", "duration": 3, "text": "Duración 3 rondas. Tus Unidades ganan +1 DEF.", "effects": [{"trigger": {"kind": "static"}, "actions": [{"kind": "modifyStat", "stat": "def", "amount": 1, "target": {"kind": "unit", "owner": "self"}, "duration": {"kind": "whileInPlay"}}]}]},
+  {"id": "C07", "name": "Estandarte del Triunfo", "type": "spell", "school": "swords", "cost": 2, "rarity": "epic", "duration": 2, "text": "Duración 2 rondas. Al jugarlo: roba 1 carta. Tus Unidades ganan +1 ATQ.", "effects": [{"trigger": {"kind": "onEnter"}, "actions": [{"kind": "draw", "count": 1}]}, {"trigger": {"kind": "static"}, "actions": [{"kind": "modifyStat", "stat": "atk", "amount": 1, "target": {"kind": "unit", "owner": "self"}, "duration": {"kind": "whileInPlay"}}]}]},
+  {"id": "C08", "name": "Auriga Veterana", "type": "unit", "school": "swords", "cost": 3, "rarity": "rare", "atk": 3, "def": 4, "text": "Activa (1/turno): otra Unidad aliada gana +2 ATQ hasta el final de la ronda.", "effects": [{"trigger": {"kind": "activated", "limit": {"per": "turn", "times": 1}}, "actions": [{"kind": "modifyStat", "stat": "atk", "amount": 2, "target": {"kind": "unit", "owner": "self", "excludeSource": true}, "duration": {"kind": "untilEndOfRound"}}]}]},
+  {"id": "C09", "name": "Embestida", "type": "trick", "school": "swords", "cost": 1, "rarity": "common", "text": "Cuando declares un ataque con una Unidad aliada: esa Unidad gana +1 ATQ y la Unidad atacada recibe −1 DEF en este enfrentamiento.", "effects": [{"trigger": {"kind": "onAttackDeclared", "by": "ally"}, "actions": [{"kind": "modifyStat", "stat": "atk", "amount": 1, "target": {"kind": "attackParticipant", "role": "attacker"}, "duration": {"kind": "thisCombat"}}, {"kind": "modifyStat", "stat": "def", "amount": -1, "target": {"kind": "attackParticipant", "role": "defender", "owner": "opponent"}, "duration": {"kind": "thisCombat"}}]}]},
+  {"id": "C10", "name": "Trompetero de Guerra", "type": "unit", "school": "wands", "cost": 2, "rarity": "rare", "atk": 2, "def": 3, "text": "Al entrar: otra Unidad aliada gana +2 ATQ hasta el final de la ronda.", "effects": [{"trigger": {"kind": "onEnter"}, "actions": [{"kind": "modifyStat", "stat": "atk", "amount": 2, "target": {"kind": "unit", "owner": "self", "excludeSource": true}, "duration": {"kind": "untilEndOfRound"}}]}]},
+  {"id": "C11", "name": "Muro de Escudos", "type": "trick", "school": "pentacles", "cost": 2, "rarity": "common", "text": "Cuando un oponente declare un ataque: la Unidad aliada atacada gana +2 DEF en este enfrentamiento y tus Unidades ganan +1 ATQ hasta el final de la ronda.", "effects": [{"trigger": {"kind": "onAttackDeclared", "by": "opponent"}, "actions": [{"kind": "modifyStat", "stat": "def", "amount": 2, "target": {"kind": "attackParticipant", "role": "defender"}, "duration": {"kind": "thisCombat"}}, {"kind": "modifyStat", "stat": "atk", "amount": 1, "target": {"kind": "unit", "owner": "self", "all": true}, "duration": {"kind": "untilEndOfRound"}}]}]}
+]

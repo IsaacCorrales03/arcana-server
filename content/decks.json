@@ -1,0 +1,855 @@
+[
+  {
+    "id": "fool",
+    "name": "El Loco — Improvisación",
+    "entries": [
+      {
+        "id": "F00",
+        "copies": 3
+      },
+      {
+        "id": "F01",
+        "copies": 3
+      },
+      {
+        "id": "F02",
+        "copies": 3
+      },
+      {
+        "id": "F03",
+        "copies": 3
+      },
+      {
+        "id": "F04",
+        "copies": 3
+      },
+      {
+        "id": "F05",
+        "copies": 3
+      },
+      {
+        "id": "F06",
+        "copies": 3
+      },
+      {
+        "id": "F07",
+        "copies": 3
+      },
+      {
+        "id": "F08",
+        "copies": 3
+      },
+      {
+        "id": "F09",
+        "copies": 3
+      },
+      {
+        "id": "M01",
+        "copies": 2
+      },
+      {
+        "id": "P01",
+        "copies": 2
+      },
+      {
+        "id": "M09",
+        "copies": 2
+      },
+      {
+        "id": "P08",
+        "copies": 2
+      },
+      {
+        "id": "D01",
+        "copies": 2
+      }
+    ]
+  },
+  {
+    "id": "magician",
+    "name": "El Mago — Conjuración",
+    "entries": [
+      {
+        "id": "M00",
+        "copies": 3
+      },
+      {
+        "id": "M01",
+        "copies": 3
+      },
+      {
+        "id": "M02",
+        "copies": 3
+      },
+      {
+        "id": "M03",
+        "copies": 3
+      },
+      {
+        "id": "M04",
+        "copies": 3
+      },
+      {
+        "id": "M05",
+        "copies": 3
+      },
+      {
+        "id": "M06",
+        "copies": 3
+      },
+      {
+        "id": "M07",
+        "copies": 3
+      },
+      {
+        "id": "M08",
+        "copies": 3
+      },
+      {
+        "id": "M09",
+        "copies": 3
+      },
+      {
+        "id": "P01",
+        "copies": 2
+      },
+      {
+        "id": "P05",
+        "copies": 2
+      },
+      {
+        "id": "F01",
+        "copies": 2
+      },
+      {
+        "id": "F05",
+        "copies": 2
+      },
+      {
+        "id": "D01",
+        "copies": 2
+      }
+    ]
+  },
+  {
+    "id": "priestess",
+    "name": "La Sacerdotisa — Presagio",
+    "entries": [
+      {
+        "id": "P00",
+        "copies": 3
+      },
+      {
+        "id": "P01",
+        "copies": 3
+      },
+      {
+        "id": "P02",
+        "copies": 3
+      },
+      {
+        "id": "P03",
+        "copies": 2
+      },
+      {
+        "id": "P04",
+        "copies": 3
+      },
+      {
+        "id": "P05",
+        "copies": 2
+      },
+      {
+        "id": "P06",
+        "copies": 2
+      },
+      {
+        "id": "P07",
+        "copies": 2
+      },
+      {
+        "id": "P08",
+        "copies": 2
+      },
+      {
+        "id": "P09",
+        "copies": 3
+      },
+      {
+        "id": "P10",
+        "copies": 3
+      },
+      {
+        "id": "M01",
+        "copies": 2
+      },
+      {
+        "id": "M03",
+        "copies": 2
+      },
+      {
+        "id": "M07",
+        "copies": 2
+      },
+      {
+        "id": "M05",
+        "copies": 3
+      },
+      {
+        "id": "F04",
+        "copies": 3
+      }
+    ]
+  },
+  {
+    "id": "death",
+    "name": "La Muerte — Sacrificio",
+    "entries": [
+      {
+        "id": "D00",
+        "copies": 3
+      },
+      {
+        "id": "D01",
+        "copies": 3
+      },
+      {
+        "id": "D02",
+        "copies": 3
+      },
+      {
+        "id": "D03",
+        "copies": 3
+      },
+      {
+        "id": "D04",
+        "copies": 3
+      },
+      {
+        "id": "D05",
+        "copies": 3
+      },
+      {
+        "id": "D06",
+        "copies": 3
+      },
+      {
+        "id": "D07",
+        "copies": 3
+      },
+      {
+        "id": "D08",
+        "copies": 3
+      },
+      {
+        "id": "D09",
+        "copies": 3
+      },
+      {
+        "id": "F01",
+        "copies": 2
+      },
+      {
+        "id": "F04",
+        "copies": 2
+      },
+      {
+        "id": "M01",
+        "copies": 2
+      },
+      {
+        "id": "P09",
+        "copies": 2
+      },
+      {
+        "id": "M03",
+        "copies": 2
+      }
+    ]
+  },
+  {
+    "id": "devil",
+    "name": "El Diablo — Aggro / Sacrificio",
+    "entries": [
+      {
+        "id": "X00",
+        "copies": 3
+      },
+      {
+        "id": "X01",
+        "copies": 3
+      },
+      {
+        "id": "X02",
+        "copies": 3
+      },
+      {
+        "id": "X03",
+        "copies": 3
+      },
+      {
+        "id": "X04",
+        "copies": 3
+      },
+      {
+        "id": "X05",
+        "copies": 3
+      },
+      {
+        "id": "X06",
+        "copies": 3
+      },
+      {
+        "id": "X07",
+        "copies": 3
+      },
+      {
+        "id": "X08",
+        "copies": 3
+      },
+      {
+        "id": "X09",
+        "copies": 3
+      },
+      {
+        "id": "F01",
+        "copies": 2
+      },
+      {
+        "id": "F04",
+        "copies": 2
+      },
+      {
+        "id": "D01",
+        "copies": 2
+      },
+      {
+        "id": "D02",
+        "copies": 2
+      },
+      {
+        "id": "P09",
+        "copies": 2
+      }
+    ]
+  },
+  {
+    "id": "lovers",
+    "name": "Los Enamorados — Enlace",
+    "entries": [
+      {
+        "id": "L00",
+        "copies": 3
+      },
+      {
+        "id": "L01",
+        "copies": 3
+      },
+      {
+        "id": "L02",
+        "copies": 3
+      },
+      {
+        "id": "L03",
+        "copies": 3
+      },
+      {
+        "id": "L04",
+        "copies": 3
+      },
+      {
+        "id": "L05",
+        "copies": 3
+      },
+      {
+        "id": "L06",
+        "copies": 3
+      },
+      {
+        "id": "L07",
+        "copies": 3
+      },
+      {
+        "id": "L08",
+        "copies": 3
+      },
+      {
+        "id": "L09",
+        "copies": 3
+      },
+      {
+        "id": "L10",
+        "copies": 3
+      },
+      {
+        "id": "P01",
+        "copies": 2
+      },
+      {
+        "id": "F09",
+        "copies": 2
+      },
+      {
+        "id": "P10",
+        "copies": 2
+      },
+      {
+        "id": "M01",
+        "copies": 1
+      }
+    ]
+  },
+  {
+    "id": "emperor",
+    "name": "El Emperador — Jerarquía",
+    "entries": [
+      {
+        "id": "E00",
+        "copies": 3
+      },
+      {
+        "id": "E01",
+        "copies": 3
+      },
+      {
+        "id": "E02",
+        "copies": 3
+      },
+      {
+        "id": "E03",
+        "copies": 3
+      },
+      {
+        "id": "E04",
+        "copies": 3
+      },
+      {
+        "id": "E05",
+        "copies": 3
+      },
+      {
+        "id": "E06",
+        "copies": 3
+      },
+      {
+        "id": "E07",
+        "copies": 3
+      },
+      {
+        "id": "E08",
+        "copies": 3
+      },
+      {
+        "id": "E09",
+        "copies": 3
+      },
+      {
+        "id": "E10",
+        "copies": 3
+      },
+      {
+        "id": "D04",
+        "copies": 2
+      },
+      {
+        "id": "M01",
+        "copies": 2
+      },
+      {
+        "id": "P04",
+        "copies": 2
+      },
+      {
+        "id": "F01",
+        "copies": 1
+      }
+    ]
+  },
+  {
+    "id": "empress",
+    "name": "La Emperatriz — Enjambre",
+    "entries": [
+      {
+        "id": "Z00",
+        "copies": 3
+      },
+      {
+        "id": "Z01",
+        "copies": 3
+      },
+      {
+        "id": "Z02",
+        "copies": 3
+      },
+      {
+        "id": "Z03",
+        "copies": 3
+      },
+      {
+        "id": "Z04",
+        "copies": 3
+      },
+      {
+        "id": "Z05",
+        "copies": 3
+      },
+      {
+        "id": "Z06",
+        "copies": 3
+      },
+      {
+        "id": "Z07",
+        "copies": 3
+      },
+      {
+        "id": "Z08",
+        "copies": 3
+      },
+      {
+        "id": "Z09",
+        "copies": 3
+      },
+      {
+        "id": "Z10",
+        "copies": 3
+      },
+      {
+        "id": "D01",
+        "copies": 2
+      },
+      {
+        "id": "X01",
+        "copies": 2
+      },
+      {
+        "id": "D02",
+        "copies": 2
+      },
+      {
+        "id": "F01",
+        "copies": 1
+      }
+    ]
+  },
+  {
+    "id": "fortune",
+    "name": "La Rueda — Azar",
+    "entries": [
+      {
+        "id": "R00",
+        "copies": 3
+      },
+      {
+        "id": "R01",
+        "copies": 3
+      },
+      {
+        "id": "R02",
+        "copies": 3
+      },
+      {
+        "id": "R03",
+        "copies": 3
+      },
+      {
+        "id": "R04",
+        "copies": 3
+      },
+      {
+        "id": "R05",
+        "copies": 3
+      },
+      {
+        "id": "R06",
+        "copies": 3
+      },
+      {
+        "id": "R07",
+        "copies": 3
+      },
+      {
+        "id": "R08",
+        "copies": 3
+      },
+      {
+        "id": "R09",
+        "copies": 3
+      },
+      {
+        "id": "R10",
+        "copies": 3
+      },
+      {
+        "id": "F04",
+        "copies": 2
+      },
+      {
+        "id": "X07",
+        "copies": 2
+      },
+      {
+        "id": "M09",
+        "copies": 2
+      },
+      {
+        "id": "F01",
+        "copies": 1
+      }
+    ]
+  },
+  {
+    "id": "chariot",
+    "name": "El Carro — Carga conjunta",
+    "entries": [
+      {
+        "id": "C00",
+        "copies": 3
+      },
+      {
+        "id": "C01",
+        "copies": 3
+      },
+      {
+        "id": "C02",
+        "copies": 3
+      },
+      {
+        "id": "C03",
+        "copies": 3
+      },
+      {
+        "id": "C04",
+        "copies": 3
+      },
+      {
+        "id": "C05",
+        "copies": 3
+      },
+      {
+        "id": "C06",
+        "copies": 3
+      },
+      {
+        "id": "C07",
+        "copies": 3
+      },
+      {
+        "id": "C08",
+        "copies": 3
+      },
+      {
+        "id": "C09",
+        "copies": 3
+      },
+      {
+        "id": "C10",
+        "copies": 3
+      },
+      {
+        "id": "C11",
+        "copies": 3
+      },
+      {
+        "id": "E05",
+        "copies": 2
+      },
+      {
+        "id": "F04",
+        "copies": 2
+      }
+    ]
+  },
+  {
+    "id": "starter-fool",
+    "name": "El Viajero",
+    "starter": true,
+    "entries": [
+      {
+        "id": "F00",
+        "copies": 3
+      },
+      {
+        "id": "F01",
+        "copies": 3
+      },
+      {
+        "id": "F02",
+        "copies": 3
+      },
+      {
+        "id": "F03",
+        "copies": 3
+      },
+      {
+        "id": "F04",
+        "copies": 3
+      },
+      {
+        "id": "F05",
+        "copies": 3
+      },
+      {
+        "id": "F06",
+        "copies": 3
+      },
+      {
+        "id": "F07",
+        "copies": 3
+      },
+      {
+        "id": "F08",
+        "copies": 3
+      },
+      {
+        "id": "F09",
+        "copies": 3
+      },
+      {
+        "id": "D01",
+        "copies": 3
+      },
+      {
+        "id": "P10",
+        "copies": 3
+      },
+      {
+        "id": "P01",
+        "copies": 2
+      },
+      {
+        "id": "M01",
+        "copies": 2
+      }
+    ]
+  },
+  {
+    "id": "starter-death",
+    "name": "La Cosecha",
+    "starter": true,
+    "entries": [
+      {
+        "id": "D00",
+        "copies": 3
+      },
+      {
+        "id": "D01",
+        "copies": 3
+      },
+      {
+        "id": "D02",
+        "copies": 3
+      },
+      {
+        "id": "D03",
+        "copies": 3
+      },
+      {
+        "id": "D04",
+        "copies": 3
+      },
+      {
+        "id": "D05",
+        "copies": 3
+      },
+      {
+        "id": "D06",
+        "copies": 3
+      },
+      {
+        "id": "D07",
+        "copies": 3
+      },
+      {
+        "id": "D08",
+        "copies": 3
+      },
+      {
+        "id": "D09",
+        "copies": 3
+      },
+      {
+        "id": "Z01",
+        "copies": 3
+      },
+      {
+        "id": "Z02",
+        "copies": 3
+      },
+      {
+        "id": "X01",
+        "copies": 2
+      },
+      {
+        "id": "P09",
+        "copies": 2
+      }
+    ]
+  },
+  {
+    "id": "starter-lovers",
+    "name": "El Juramento",
+    "starter": true,
+    "entries": [
+      {
+        "id": "L00",
+        "copies": 3
+      },
+      {
+        "id": "L01",
+        "copies": 3
+      },
+      {
+        "id": "L02",
+        "copies": 3
+      },
+      {
+        "id": "L03",
+        "copies": 3
+      },
+      {
+        "id": "L04",
+        "copies": 3
+      },
+      {
+        "id": "L05",
+        "copies": 3
+      },
+      {
+        "id": "L06",
+        "copies": 3
+      },
+      {
+        "id": "L07",
+        "copies": 3
+      },
+      {
+        "id": "L08",
+        "copies": 3
+      },
+      {
+        "id": "L09",
+        "copies": 3
+      },
+      {
+        "id": "L10",
+        "copies": 2
+      },
+      {
+        "id": "F09",
+        "copies": 2
+      },
+      {
+        "id": "P05",
+        "copies": 2
+      },
+      {
+        "id": "P09",
+        "copies": 2
+      },
+      {
+        "id": "P10",
+        "copies": 2
+      }
+    ]
+  }
+]

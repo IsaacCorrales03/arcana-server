@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: arcana-competitivo
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./server/arcana-server/competitive/Dockerfile
+    healthCheckPath: /health
+    disk:
+      name: ladder
+      mountPath: /var/data
+      sizeGB: 1

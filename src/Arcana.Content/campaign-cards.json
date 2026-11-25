@@ -1,0 +1,695 @@
+[
+  {
+    "id": "F11",
+    "name": "Saltimbanqui del Acantilado",
+    "type": "unit",
+    "school": "wands",
+    "cost": 2,
+    "rarity": "rare",
+    "atk": 3,
+    "def": 2,
+    "text": "Al entrar: roba 1 carta y luego descarta 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "draw",
+            "count": 1
+          },
+          {
+            "kind": "discard",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "F12",
+    "name": "El Perro Blanco",
+    "type": "unit",
+    "school": "cups",
+    "cost": 1,
+    "rarity": "epic",
+    "atk": 1,
+    "def": 3,
+    "text": "Mientras controles a «El Loco», gana +2 ATQ y +1 DEF.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "controlsCard",
+            "cardId": "F00"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 2,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          },
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M11",
+    "name": "Escriba de Runas",
+    "type": "unit",
+    "school": "swords",
+    "cost": 2,
+    "rarity": "rare",
+    "atk": 2,
+    "def": 3,
+    "text": "Cada vez que juegues un Hechizo, gana +1 ATQ permanente.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onSpellPlayed",
+          "by": "self"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "permanent"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "M12",
+    "name": "Gran Contraconjuro",
+    "type": "trick",
+    "school": "swords",
+    "cost": 3,
+    "rarity": "epic",
+    "text": "Cuando un oponente juegue un Hechizo: niega ese Hechizo y roba 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onSpellPlayed",
+          "by": "opponent"
+        },
+        "actions": [
+          {
+            "kind": "negate",
+            "what": "spell"
+          },
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P11",
+    "name": "Novicia de la Marea",
+    "type": "unit",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "rare",
+    "atk": 2,
+    "def": 4,
+    "text": "Al entrar: recupera 2 PV y activa Presagio 2.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "heal",
+            "amount": 2,
+            "player": "self"
+          },
+          {
+            "kind": "omen",
+            "count": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "P12",
+    "name": "Velo Eterno",
+    "type": "spell",
+    "school": "cups",
+    "cost": 3,
+    "rarity": "epic",
+    "duration": 3,
+    "text": "Duración 3 rondas. Al inicio de tu turno: recupera 2 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onTurnStart",
+          "whose": "self"
+        },
+        "actions": [
+          {
+            "kind": "heal",
+            "amount": 2,
+            "player": "self"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z12",
+    "name": "Semilla Dorada",
+    "type": "unit",
+    "school": "cups",
+    "cost": 1,
+    "rarity": "rare",
+    "atk": 1,
+    "def": 1,
+    "text": "Cuando esta Unidad sea destruida: invoca dos Retoños (1/2, en DEF).",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onDestroyed"
+        },
+        "actions": [
+          {
+            "kind": "summonToken",
+            "cardId": "Z90",
+            "count": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Z13",
+    "name": "Corona de Espinas",
+    "type": "spell",
+    "school": "pentacles",
+    "cost": 3,
+    "rarity": "epic",
+    "duration": 3,
+    "text": "Duración 3 rondas. Al jugarlo: invoca un Retoño (1/2, en DEF). Tus Unidades de coste 1 o menos ganan +1 ATQ.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "summonToken",
+            "cardId": "Z90",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "costAtMost": 1
+            },
+            "duration": {
+              "kind": "whileInPlay"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E12",
+    "name": "Abanderado Imperial",
+    "type": "unit",
+    "school": "swords",
+    "cost": 2,
+    "rarity": "rare",
+    "atk": 2,
+    "def": 3,
+    "text": "Al entrar: ordena tus Unidades de mayor a menor coste.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "sortUnits"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "E13",
+    "name": "Guardia del Trono",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 5,
+    "rarity": "epic",
+    "atk": 4,
+    "def": 6,
+    "text": "Mientras haya Jerarquía, tus demás Unidades ganan +1 ATQ.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "hierarchy"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "excludeSource": true
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "L12",
+    "name": "Trovador del Juramento",
+    "type": "unit",
+    "school": "wands",
+    "cost": 2,
+    "rarity": "rare",
+    "atk": 3,
+    "def": 2,
+    "text": "Pareja: Musa de las Rosas. Emparejado: la Unidad gana +2 ATQ.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "conditions": [
+          {
+            "kind": "paired"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 2,
+            "target": {
+              "kind": "self"
+            },
+            "duration": {
+              "kind": "whileCondition"
+            }
+          }
+        ]
+      }
+    ],
+    "partner": "L13"
+  },
+  {
+    "id": "L13",
+    "name": "Musa de las Rosas",
+    "type": "unit",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "epic",
+    "atk": 2,
+    "def": 3,
+    "text": "Pareja: Trovador del Juramento. Al emparejar: recupera 2 PV y roba 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onPaired"
+        },
+        "actions": [
+          {
+            "kind": "heal",
+            "amount": 2,
+            "player": "self"
+          },
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      }
+    ],
+    "partner": "L12"
+  },
+  {
+    "id": "R12",
+    "name": "Tahúr de Medianoche",
+    "type": "unit",
+    "school": "cups",
+    "cost": 2,
+    "rarity": "rare",
+    "atk": 2,
+    "def": 2,
+    "text": "Al entrar: lanza una moneda. Cara: roba 1 carta. Cruz: recupera 2 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "roll",
+            "sides": 2,
+            "outcomes": [
+              {
+                "min": 1,
+                "actions": [
+                  {
+                    "kind": "heal",
+                    "amount": 2,
+                    "player": "self"
+                  }
+                ]
+              },
+              {
+                "min": 2,
+                "actions": [
+                  {
+                    "kind": "draw",
+                    "count": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "R13",
+    "name": "As Bajo la Manga",
+    "type": "trick",
+    "school": "wands",
+    "cost": 2,
+    "rarity": "epic",
+    "text": "Cuando declares un ataque con una Unidad aliada: lanza un dado; esa Unidad gana +1 ATQ por cada punto en este enfrentamiento.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAttackDeclared",
+          "by": "ally"
+        },
+        "actions": [
+          {
+            "kind": "roll",
+            "sides": 6,
+            "outcomes": [
+              {
+                "min": 1,
+                "actions": [
+                  {
+                    "kind": "modifyStat",
+                    "stat": "atk",
+                    "amount": 1,
+                    "target": {
+                      "kind": "attackParticipant",
+                      "role": "attacker"
+                    },
+                    "duration": {
+                      "kind": "thisCombat"
+                    },
+                    "per": "roll"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D11",
+    "name": "Plañidera del Umbral",
+    "type": "unit",
+    "school": "pentacles",
+    "cost": 2,
+    "rarity": "rare",
+    "atk": 2,
+    "def": 3,
+    "text": "Cuando otra Unidad aliada sea destruida, recuperas 1 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed",
+          "other": true
+        },
+        "actions": [
+          {
+            "kind": "heal",
+            "amount": 1,
+            "player": "self"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D12",
+    "name": "Guadaña Antigua",
+    "type": "spell",
+    "school": "pentacles",
+    "cost": 3,
+    "rarity": "epic",
+    "duration": 2,
+    "text": "Duración 2 rondas. Tus Unidades ganan +1 ATQ. La primera vez por ronda que una Unidad aliada sea destruida, roba 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "static"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self"
+            },
+            "duration": {
+              "kind": "whileInPlay"
+            }
+          }
+        ]
+      },
+      {
+        "trigger": {
+          "kind": "onAllyDestroyed"
+        },
+        "conditions": [
+          {
+            "kind": "firstTimeThis",
+            "per": "round"
+          }
+        ],
+        "actions": [
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "X11",
+    "name": "Prestamista Sonriente",
+    "type": "unit",
+    "school": "wands",
+    "cost": 2,
+    "rarity": "rare",
+    "atk": 3,
+    "def": 2,
+    "text": "Al entrar: puedes perder 1 PV; si lo haces, el rival pierde 2 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "optional": true,
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 1,
+            "player": "self"
+          }
+        ],
+        "thenIfDone": [
+          {
+            "kind": "damagePlayer",
+            "amount": 2,
+            "player": "opponent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "X12",
+    "name": "Pacto de Sangre",
+    "type": "spell",
+    "school": "pentacles",
+    "cost": 2,
+    "rarity": "epic",
+    "duration": 3,
+    "text": "Duración 3 rondas. Al inicio de tu turno: pierdes 1 PV y el rival pierde 2 PV.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onTurnStart",
+          "whose": "self"
+        },
+        "actions": [
+          {
+            "kind": "damagePlayer",
+            "amount": 1,
+            "player": "self"
+          },
+          {
+            "kind": "damagePlayer",
+            "amount": 2,
+            "player": "opponent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "C12",
+    "name": "Auriga del Alba",
+    "type": "unit",
+    "school": "wands",
+    "cost": 4,
+    "rarity": "rare",
+    "atk": 4,
+    "def": 4,
+    "text": "Al entrar: tus Unidades ganan +1 ATQ y +1 DEF hasta el final de la ronda.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "all": true
+            },
+            "duration": {
+              "kind": "untilEndOfRound"
+            }
+          },
+          {
+            "kind": "modifyStat",
+            "stat": "def",
+            "amount": 1,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "all": true
+            },
+            "duration": {
+              "kind": "untilEndOfRound"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "C13",
+    "name": "Triunfo de los Mil Cascos",
+    "type": "spell",
+    "school": "swords",
+    "cost": 4,
+    "rarity": "epic",
+    "duration": 1,
+    "text": "Duración 1 ronda. Al jugarlo: tus Unidades ganan +2 ATQ hasta el final de la ronda; roba 1 carta.",
+    "effects": [
+      {
+        "trigger": {
+          "kind": "onEnter"
+        },
+        "actions": [
+          {
+            "kind": "modifyStat",
+            "stat": "atk",
+            "amount": 2,
+            "target": {
+              "kind": "unit",
+              "owner": "self",
+              "all": true
+            },
+            "duration": {
+              "kind": "untilEndOfRound"
+            }
+          },
+          {
+            "kind": "draw",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  }
+]

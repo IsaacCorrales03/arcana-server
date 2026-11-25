@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Arcana.Content</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- contenido del juego: arcana-godot/content -->
+    <EmbeddedResource Include="../../content/cards.json" LogicalName="cards.json" />
+    <EmbeddedResource Include="../../content/decks.json" LogicalName="decks.json" />
+    <EmbeddedResource Include="weekly-box-cards.json" LogicalName="weekly-box-cards.json" />
+    <EmbeddedResource Include="campaign-cards.json" LogicalName="campaign-cards.json" />
+    <EmbeddedResource Include="campaign.json" LogicalName="campaign.json" />
+  </ItemGroup>
+</Project>

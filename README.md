@@ -1,37 +1,23 @@
-# Servidor de ARCANA
+# Servidor de ARCANA (servicio único)
 
-Perfiles y salas en línea (SSE) para los clientes Godot y web. Solo la API, sin versión web. Puerto **25565**.
+Un solo servicio .NET 8 para el juego: cuentas con contraseña, competitivo, salas casuales por SSE, torneos en línea y
+rotación semanal de cajas. Sustituye al antiguo servidor en Rust (sigue en el historial de git).
 
-## Con Docker
+Esta carpeta es una **copia generada**: la fuente es `arcana-godot`. Para actualizarla, desde `arcana-godot/server`:
+`./publicar-servidor.ps1`, y luego `git add . ; git commit ; git push origin main`.
 
-```bash
-docker compose up -d --build
+## Render
+
+- Runtime **Docker**, `Dockerfile` en la raíz. Render define `PORT` y el servicio escucha ahí (25565 si no existe).
+- Comprobación de salud: `/health`.
+- **Disco persistente** montado en `/var/data` (o apunta `ARCANA_RANKED_DATA` a tu disco). Ahí viven `ladder.json` (cuentas y
+  clasificación) y `seal.secret`. Sin disco, las cuentas se borran en cada despliegue.
+- Una sola instancia: la cola y las salas viven en memoria.
+
+## Local
+
+```
+dotnet run --project server/arcana-server/competitive
 ```
 
-Los perfiles se guardan en el volumen `arcana-datos` (archivo `/data/perfiles.json`).
-Ver el registro: `docker logs -f arcana` (al arrancar escribe `ARCANA_LISTO http://0.0.0.0:25565`).
-Parar: `docker compose down` (los perfiles se conservan en el volumen).
-
-## Sin Docker (con Cargo)
-
-```bash
-cargo build --release --locked
-./target/release/arcana-server --lan --data data/perfiles.json
-```
-
-`--lan` escucha en todas las interfaces (0.0.0.0); sin él, solo en este equipo (127.0.0.1).
-Otras opciones: `--port N`, `--host IP`, `--static carpeta` (sirve una versión web compilada).
-
-## Conectar el juego
-
-En ARCANA: Configuración → «Servidor en línea» → `http://IP-del-servidor:25565`.
-Si el servidor está fuera de tu red, abre el puerto 25565 (TCP) en su cortafuegos o router.
-Un jugador crea la sala desde «En línea» y el otro se une con el código.
-
-## Comprobar que responde
-
-```bash
-curl http://localhost:25565/api/salas
-```
-
-Devuelve la lista de salas abiertas (`[]` si no hay ninguna).
+Escucha en `http://127.0.0.1:25565`. `--selftest` ejecuta la autocomprobación de la rotación de cajas.

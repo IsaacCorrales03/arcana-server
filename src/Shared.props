@@ -1,0 +1,18 @@
+<Project>
+  <PropertyGroup>
+    <ArcanaContentRoot>$(MSBuildThisFileDirectory)../content</ArcanaContentRoot>
+  </PropertyGroup>
+  <!-- Todo el código del juego (contenido, motor, IA y meta) compilado dentro del ensamblado que lo importa:
+       un solo ensamblado para el cliente Godot y las herramientas (exportar y cargar es más simple). -->
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Arcana.Content/**/*.cs" Exclude="$(MSBuildThisFileDirectory)**/obj/**;$(MSBuildThisFileDirectory)**/bin/**" />
+    <Compile Include="$(MSBuildThisFileDirectory)Arcana.Core/**/*.cs" Exclude="$(MSBuildThisFileDirectory)**/obj/**;$(MSBuildThisFileDirectory)**/bin/**" />
+    <Compile Include="$(MSBuildThisFileDirectory)Arcana.AI/**/*.cs" Exclude="$(MSBuildThisFileDirectory)**/obj/**;$(MSBuildThisFileDirectory)**/bin/**" />
+    <Compile Include="$(MSBuildThisFileDirectory)Arcana.Meta/**/*.cs" Exclude="$(MSBuildThisFileDirectory)**/obj/**;$(MSBuildThisFileDirectory)**/bin/**" />
+    <EmbeddedResource Include="$(ArcanaContentRoot)/cards.json" LogicalName="cards.json" />
+    <EmbeddedResource Include="$(ArcanaContentRoot)/decks.json" LogicalName="decks.json" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Arcana.Content/weekly-box-cards.json" LogicalName="weekly-box-cards.json" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Arcana.Content/campaign-cards.json" LogicalName="campaign-cards.json" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Arcana.Content/campaign.json" LogicalName="campaign.json" />
+  </ItemGroup>
+</Project>

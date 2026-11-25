@@ -1,0 +1,1738 @@
+[
+ {
+  "id": "fool",
+  "numero": "0",
+  "nombre": "El Loco",
+  "lugar": "El Camino sin Mapa",
+  "color": "#b98cff",
+  "acento": "#f3d98a",
+  "jefe": "F00",
+  "leccion": "Robar, descartar y atacar directo: el tempo.",
+  "relato": "El Grimorio se abre en una página en blanco: el Camino sin Mapa. El Loco no custodia nada, solo ríe en el borde del acantilado. Para pasar hay que aprender a soltar cartas, robar otras nuevas y golpear sin pedir permiso.",
+  "titulo": "Caminante sin Mapa",
+  "cartas": [
+   "F11",
+   "F12"
+  ],
+  "niveles": [
+   {
+    "id": "fool-01",
+    "n": 1,
+    "nombre": "Primer Paso",
+    "tipo": "duelo",
+    "npc": "F01",
+    "mazo": "magician",
+    "ia": "heuristic",
+    "pv": 24,
+    "estrella": "rondas<=8",
+    "intro": "¿Tú también buscas el camino? Yo tampoco sé dónde está. ¡Vamos a perdernos juntos!"
+   },
+   {
+    "id": "fool-02",
+    "n": 2,
+    "nombre": "Bufón en la Encrucijada",
+    "tipo": "duelo",
+    "npc": "F02",
+    "mazo": "fool",
+    "ia": "heuristic",
+    "pv": 26,
+    "estrella": "robos>=12",
+    "intro": "¡Ja! Cada carta que robo me hace más fuerte. ¿Cuántas robarás tú antes de caer?"
+   },
+   {
+    "id": "fool-03",
+    "n": 3,
+    "nombre": "Atajo Peligroso",
+    "tipo": "condicion",
+    "npc": "F08",
+    "mazo": "emperor",
+    "ia": "heuristic",
+    "pv": 28,
+    "condicion": "directos>=2",
+    "estrella": "pv>=20",
+    "intro": "Los atajos son peligrosos… a menos que golpees directo. Demuéstrame que sabes saltar."
+   },
+   {
+    "id": "fool-04",
+    "n": 4,
+    "nombre": "Lección del Descarte",
+    "tipo": "especial",
+    "npc": "F03",
+    "mazo": "priestess",
+    "ia": "heuristic",
+    "pv": 26,
+    "prestado": "fool",
+    "estrella": "robos>=10",
+    "intro": "Te presto la baraja del Loco. Suelta lo que no sirve y verás cómo vuela el resto.",
+    "texto": "Mazo prestado de El Loco y mano de aperturas: aprende a descartar para ganar ATQ.",
+    "mano": [
+     "F01",
+     "F02",
+     "F08",
+     "F04",
+     "F09"
+    ]
+   },
+   {
+    "id": "fool-05",
+    "n": 5,
+    "nombre": "La Peregrina del Azar",
+    "tipo": "minijefe",
+    "npc": "F03",
+    "mazo": "fool",
+    "ia": "heuristic",
+    "pv": 34,
+    "estrella": "bajas<=3",
+    "intro": "La Peregrina no pregunta adónde va. Solo llega antes que tú.",
+    "texto": "La Peregrina ya está en juego (3/5).",
+    "campo": [
+     "F03"
+    ]
+   },
+   {
+    "id": "fool-06",
+    "n": 6,
+    "nombre": "La Posada de los Sin Rumbo",
+    "tipo": "duelo",
+    "npc": "F10",
+    "mazo": "lovers",
+    "ia": "heuristic",
+    "pv": 30,
+    "estrella": "trucos>=2",
+    "intro": "He dibujado mil mapas y ninguno es correcto. Quizá el tuyo lo sea, si sobrevives."
+   },
+   {
+    "id": "fool-07",
+    "n": 7,
+    "nombre": "Salto de Fe",
+    "tipo": "condicion",
+    "npc": "F02",
+    "mazo": "devil",
+    "ia": "heuristic",
+    "pv": 30,
+    "condicion": "rondas<=7",
+    "estrella": "directos>=4",
+    "intro": "¡Salta, salta! Que la ronda se acaba y aún no has llegado."
+   },
+   {
+    "id": "fool-08",
+    "n": 8,
+    "nombre": "Regla Rota",
+    "tipo": "especial",
+    "npc": "F00",
+    "mazo": "emperor",
+    "ia": "heuristic",
+    "pv": 12,
+    "prestado": "fool",
+    "condicion": "rondas<=5",
+    "intro": "Tres guardias, doce PV y ninguna regla que me detenga. ¿Ves por dónde paso yo?",
+    "texto": "Rompecabezas: tres defensores imperiales y solo 12 PV que quitar. El Loco ignora a los defensores y ataca directo.",
+    "mano": [
+     "F00",
+     "F01",
+     "F02",
+     "F04",
+     "F08"
+    ],
+    "campo": [
+     "E02",
+     "E03",
+     "E04"
+    ]
+   },
+   {
+    "id": "fool-09",
+    "n": 9,
+    "nombre": "Ensayo del Loco",
+    "tipo": "condicion",
+    "npc": "F00",
+    "mazo": "fool",
+    "ia": "strategic",
+    "pv": 34,
+    "condicion": "pv>=15",
+    "estrella": "directos>=5",
+    "intro": "Mi camino no tiene mapa, pero sí un final. Llega con vida y hablaremos."
+   },
+   {
+    "id": "fool-10",
+    "n": 10,
+    "nombre": "0 · El Loco",
+    "tipo": "jefe",
+    "npc": "F00",
+    "mazo": "fool",
+    "ia": "strategic",
+    "pv": 40,
+    "estrella": "rondas<=10",
+    "intro": "¡Por fin, alguien que ha perdido el miedo! Ahora piérdelo todo.",
+    "texto": "El Loco empieza en juego y ataca directo siempre.",
+    "campo": [
+     "F00"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "magician",
+  "numero": "I",
+  "nombre": "El Mago",
+  "lugar": "La Torre de los Hechizos",
+  "color": "#ff7a4a",
+  "acento": "#ffd9a8",
+  "jefe": "M00",
+  "leccion": "Hechizos en campo y negar la jugada clave.",
+  "relato": "La Torre crece hacia arriba y sus escaleras cambian de lugar. Aquí los hechizos no se gastan: se acumulan. El Mago enseña que quien controla la mesa de Hechizos controla el combate, y que un Contraconjuro a tiempo vale una ronda entera.",
+  "titulo": "Aprendiz de la Torre",
+  "cartas": [
+   "M11",
+   "M12"
+  ],
+  "niveles": [
+   {
+    "id": "magician-01",
+    "n": 1,
+    "nombre": "Aprendiz Ansioso",
+    "tipo": "duelo",
+    "npc": "M01",
+    "mazo": "fool",
+    "ia": "heuristic",
+    "pv": 24,
+    "estrella": "hechizos>=2",
+    "intro": "¡Ah! ¿Un visitante? Espera, que aún no sé cómo se cierra este hechizo…"
+   },
+   {
+    "id": "magician-02",
+    "n": 2,
+    "nombre": "Biblioteca en Llamas",
+    "tipo": "duelo",
+    "npc": "M02",
+    "mazo": "devil",
+    "ia": "heuristic",
+    "pv": 26,
+    "estrella": "trucos>=1",
+    "intro": "La biblioteca arde cada noche y renace cada mañana. Hoy arderás tú con ella."
+   },
+   {
+    "id": "magician-03",
+    "n": 3,
+    "nombre": "Examen de Maná",
+    "tipo": "condicion",
+    "npc": "M02",
+    "mazo": "priestess",
+    "ia": "heuristic",
+    "pv": 28,
+    "condicion": "hechizos>=3",
+    "estrella": "pv>=20",
+    "intro": "Primera lección de la Torre: un mago sin Hechizos es solo alguien con sombrero."
+   },
+   {
+    "id": "magician-04",
+    "n": 4,
+    "nombre": "El Primer Contraconjuro",
+    "tipo": "especial",
+    "npc": "M04",
+    "mazo": "magician",
+    "ia": "heuristic",
+    "pv": 28,
+    "prestado": "magician",
+    "condicion": "trucos>=1",
+    "estrella": "bajas<=2",
+    "intro": "Toma la baraja del Mago. Cuando el rival conjure, di «no» con estilo.",
+    "texto": "Mazo prestado de El Mago: aprende a negar un Hechizo y una habilidad con Sello y Contraconjuro.",
+    "mano": [
+     "M01",
+     "M02",
+     "M05",
+     "M07",
+     "M08"
+    ]
+   },
+   {
+    "id": "magician-05",
+    "n": 5,
+    "nombre": "Guardián de Sigilos",
+    "tipo": "minijefe",
+    "npc": "M03",
+    "mazo": "magician",
+    "ia": "heuristic",
+    "pv": 34,
+    "estrella": "rondas<=9",
+    "intro": "Mis sigilos brillan con cada Hechizo. Y ya hay uno encendido.",
+    "texto": "Empieza con Círculo de Potencia activo.",
+    "campo": [
+     "M05"
+    ]
+   },
+   {
+    "id": "magician-06",
+    "n": 6,
+    "nombre": "Puente de Cristal",
+    "tipo": "duelo",
+    "npc": "M04",
+    "mazo": "lovers",
+    "ia": "heuristic",
+    "pv": 30,
+    "estrella": "hechizos>=4",
+    "intro": "Este puente solo aguanta a quien llena la mesa de magia. Pisa con cuidado."
+   },
+   {
+    "id": "magician-07",
+    "n": 7,
+    "nombre": "Sin Magia",
+    "tipo": "condicion",
+    "npc": "M02",
+    "mazo": "emperor",
+    "ia": "heuristic",
+    "pv": 30,
+    "condicion": "hechizos<=0",
+    "estrella": "trucos>=2",
+    "intro": "En este piso la magia está prohibida. Gana con lo que tengas en las manos."
+   },
+   {
+    "id": "magician-08",
+    "n": 8,
+    "nombre": "Cadena de Tres",
+    "tipo": "especial",
+    "npc": "M03",
+    "mazo": "fool",
+    "ia": "heuristic",
+    "pv": 28,
+    "prestado": "magician",
+    "condicion": "trucos>=3",
+    "estrella": "pv>=25",
+    "intro": "Tres Trucos en cadena. Si los encadenas bien, ni yo podré seguirte.",
+    "texto": "Mazo prestado de El Mago: monta una cadena de tres Trucos para frenar la ofensiva del rival.",
+    "mano": [
+     "M09",
+     "M07",
+     "M08",
+     "M05",
+     "M02"
+    ]
+   },
+   {
+    "id": "magician-09",
+    "n": 9,
+    "nombre": "Ensayo del Mago",
+    "tipo": "condicion",
+    "npc": "M04",
+    "mazo": "magician",
+    "ia": "strategic",
+    "pv": 34,
+    "condicion": "hechizos>=4",
+    "estrella": "bajas<=3",
+    "intro": "El Mago observa desde la cima. Enséñale que sabes tejer."
+   },
+   {
+    "id": "magician-10",
+    "n": 10,
+    "nombre": "I · El Mago",
+    "tipo": "jefe",
+    "npc": "M00",
+    "mazo": "magician",
+    "ia": "strategic",
+    "pv": 40,
+    "estrella": "hechizos>=5",
+    "intro": "Cada hechizo que no gasto se queda conmigo. ¿Cuántos crees que tengo ya?",
+    "texto": "El Mago empieza con Archivo Astral en campo: sus Hechizos no pierden duración.",
+    "campo": [
+     "M00",
+     "M06"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "priestess",
+  "numero": "II",
+  "nombre": "La Sacerdotisa",
+  "lugar": "El Velo de la Luna",
+  "color": "#4db8ff",
+  "acento": "#cfe9ff",
+  "jefe": "P00",
+  "leccion": "Presagio, curación y muros; ganar antes de que se agote el mazo.",
+  "relato": "El Velo es un templo donde el tiempo avanza más despacio. La Sacerdotisa podría ganar esperando eternamente, y por eso cada prueba aquí tiene un límite de rondas: el Velo se cierra al amanecer.",
+  "titulo": "Guardián del Velo",
+  "cartas": [
+   "P11",
+   "P12"
+  ],
+  "niveles": [
+   {
+    "id": "priestess-01",
+    "n": 1,
+    "nombre": "Fuente del Velo",
+    "tipo": "duelo",
+    "npc": "P01",
+    "mazo": "fool",
+    "ia": "heuristic",
+    "pv": 24,
+    "estrella": "curar>=3",
+    "intro": "El agua me contó que vendrías. No me contó si ganarías."
+   },
+   {
+    "id": "priestess-02",
+    "n": 2,
+    "nombre": "Oración a la Luna",
+    "tipo": "duelo",
+    "npc": "P02",
+    "mazo": "death",
+    "ia": "heuristic",
+    "pv": 26,
+    "estrella": "rondas<=10",
+    "intro": "Habla bajo. Aquí el silencio también es un escudo."
+   },
+   {
+    "id": "priestess-03",
+    "n": 3,
+    "nombre": "Luz Menguante",
+    "tipo": "condicion",
+    "npc": "P01",
+    "mazo": "devil",
+    "ia": "heuristic",
+    "pv": 28,
+    "condicion": "curar>=5",
+    "estrella": "pv>=18",
+    "intro": "La luz mengua y las heridas pesan. Cúrate o el Velo te olvidará."
+   },
+   {
+    "id": "priestess-04",
+    "n": 4,
+    "nombre": "Orden de los Presagios",
+    "tipo": "especial",
+    "npc": "P03",
+    "mazo": "magician",
+    "ia": "heuristic",
+    "pv": 28,
+    "prestado": "priestess",
+    "condicion": "curar>=6",
+    "estrella": "rondas<=9",
+    "intro": "Las estrellas se ordenan solas… casi. Te presto mi baraja: elige bien tus robos.",
+    "texto": "Mazo prestado de La Sacerdotisa y robos ordenados: usa Presagio para elegir el siguiente golpe.",
+    "mano": [
+     "P01",
+     "P02",
+     "P05",
+     "P08",
+     "P09"
+    ],
+    "robos": [
+     "P10",
+     "P04",
+     "P03",
+     "P06"
+    ]
+   },
+   {
+    "id": "priestess-05",
+    "n": 5,
+    "nombre": "Centinela Lunar",
+    "tipo": "minijefe",
+    "npc": "P04",
+    "mazo": "priestess",
+    "ia": "heuristic",
+    "pv": 34,
+    "condicion": "rondas<=14",
+    "estrella": "curar>=8",
+    "intro": "El Velo se cierra al amanecer. Tienes catorce rondas para cruzar mi guardia.",
+    "texto": "Límite de 14 rondas para ganar.",
+    "campo": [
+     "P04"
+    ]
+   },
+   {
+    "id": "priestess-06",
+    "n": 6,
+    "nombre": "Biblioteca de Estrellas",
+    "tipo": "duelo",
+    "npc": "P03",
+    "mazo": "emperor",
+    "ia": "heuristic",
+    "pv": 30,
+    "estrella": "trucos>=2",
+    "intro": "He leído tu destino. Es corto. ¿Lo cambiamos?"
+   },
+   {
+    "id": "priestess-07",
+    "n": 7,
+    "nombre": "Marea Alta",
+    "tipo": "condicion",
+    "npc": "P02",
+    "mazo": "fortune",
+    "ia": "heuristic",
+    "pv": 30,
+    "condicion": "rondas<=9",
+    "estrella": "curar>=4",
+    "intro": "Sube la marea. Si dudas, te arrastra."
+   },
+   {
+    "id": "priestess-08",
+    "n": 8,
+    "nombre": "Dos Pagos",
+    "tipo": "especial",
+    "npc": "P00",
+    "mazo": "devil",
+    "ia": "heuristic",
+    "pv": 24,
+    "prestado": "priestess",
+    "condicion": "curar>=8",
+    "intro": "Paga con tu vida y recupérala con la mía. Así se juega en el Velo.",
+    "texto": "Empiezas con 15 PV y el mazo prestado de La Sacerdotisa: paga PV por ventaja y recupéralos.",
+    "mano": [
+     "P00",
+     "P01",
+     "P02",
+     "P08",
+     "P10"
+    ],
+    "miPV": 15
+   },
+   {
+    "id": "priestess-09",
+    "n": 9,
+    "nombre": "Ensayo del Velo",
+    "tipo": "condicion",
+    "npc": "P02",
+    "mazo": "priestess",
+    "ia": "strategic",
+    "pv": 34,
+    "condicion": "rondas<=11",
+    "estrella": "pv>=20",
+    "intro": "Mi señora no tiene prisa. Tú sí: el amanecer no espera."
+   },
+   {
+    "id": "priestess-10",
+    "n": 10,
+    "nombre": "II · La Sacerdotisa",
+    "tipo": "jefe",
+    "npc": "P00",
+    "mazo": "priestess",
+    "ia": "strategic",
+    "pv": 40,
+    "condicion": "rondas<=15",
+    "estrella": "curar>=10",
+    "intro": "Podría esperar una eternidad. Por eso solo te doy quince rondas.",
+    "texto": "Empieza con Santuario del Velo. Límite de 15 rondas: si se agota, el Velo se cierra y repites.",
+    "campo": [
+     "P00",
+     "P06"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "empress",
+  "numero": "III",
+  "nombre": "La Emperatriz",
+  "lugar": "El Jardín que Devora",
+  "color": "#7ee081",
+  "acento": "#e8ffd9",
+  "jefe": "Z00",
+  "leccion": "Enjambre: llenar el campo de Retoños y crecer con cada baja.",
+  "relato": "El Jardín no tiene muros, solo crecimiento. Cada Unidad caída se vuelve semilla. La Emperatriz enseña a no temer las bajas: en la colmena, perder una pieza pequeña es alimentar a las grandes.",
+  "titulo": "Jardinero de la Colmena",
+  "cartas": [
+   "Z12",
+   "Z13"
+  ],
+  "niveles": [
+   {
+    "id": "empress-01",
+    "n": 1,
+    "nombre": "Semilla",
+    "tipo": "duelo",
+    "npc": "Z01",
+    "mazo": "fool",
+    "ia": "heuristic",
+    "pv": 24,
+    "estrella": "fichas>=2",
+    "intro": "¡Ñam! ¿Eres comida? Todo en el jardín es comida… al final."
+   },
+   {
+    "id": "empress-02",
+    "n": 2,
+    "nombre": "Hierba Mala",
+    "tipo": "duelo",
+    "npc": "Z02",
+    "mazo": "magician",
+    "ia": "heuristic",
+    "pv": 26,
+    "estrella": "bajas<=3",
+    "intro": "Si me pisas, broto dos veces. Si no me pisas, también."
+   },
+   {
+    "id": "empress-03",
+    "n": 3,
+    "nombre": "Cosecha",
+    "tipo": "condicion",
+    "npc": "Z04",
+    "mazo": "lovers",
+    "ia": "heuristic",
+    "pv": 28,
+    "condicion": "fichas>=4",
+    "estrella": "rondas<=9",
+    "intro": "Somos muchos. Siempre somos muchos. ¿Sabes contar tanto?"
+   },
+   {
+    "id": "empress-04",
+    "n": 4,
+    "nombre": "Cuatro Huecos",
+    "tipo": "especial",
+    "npc": "Z03",
+    "mazo": "emperor",
+    "ia": "heuristic",
+    "pv": 28,
+    "prestado": "empress",
+    "condicion": "fichas>=6",
+    "estrella": "pv>=20",
+    "intro": "Te presto mi camada. Llena el campo y no dejes ni un hueco libre.",
+    "texto": "Mazo prestado de La Emperatriz: llena los cuatro huecos de Unidad antes de que el rival se ordene.",
+    "mano": [
+     "Z01",
+     "Z02",
+     "Z03",
+     "Z04",
+     "Z08"
+    ]
+   },
+   {
+    "id": "empress-05",
+    "n": 5,
+    "nombre": "Madre de la Camada",
+    "tipo": "minijefe",
+    "npc": "Z03",
+    "mazo": "empress",
+    "ia": "heuristic",
+    "pv": 34,
+    "estrella": "bajas<=5",
+    "intro": "Mis crías ya están despiertas. Y tienen hambre.",
+    "texto": "Empieza con la Madre y un Retoño.",
+    "campo": [
+     "Z03",
+     "Z90"
+    ]
+   },
+   {
+    "id": "empress-06",
+    "n": 6,
+    "nombre": "El Panal",
+    "tipo": "duelo",
+    "npc": "Z05",
+    "mazo": "death",
+    "ia": "heuristic",
+    "pv": 30,
+    "estrella": "combate>=15",
+    "intro": "En el panal nadie cae solo. Cada caída trae a otro."
+   },
+   {
+    "id": "empress-07",
+    "n": 7,
+    "nombre": "Plaga",
+    "tipo": "condicion",
+    "npc": "Z04",
+    "mazo": "devil",
+    "ia": "heuristic",
+    "pv": 30,
+    "condicion": "pv>=15",
+    "estrella": "fichas>=8",
+    "intro": "La plaga avanza. Sobrevive con quince PV y la colmena te respetará."
+   },
+   {
+    "id": "empress-08",
+    "n": 8,
+    "nombre": "Poda",
+    "tipo": "especial",
+    "npc": "Z06",
+    "mazo": "emperor",
+    "ia": "heuristic",
+    "pv": 25,
+    "prestado": "empress",
+    "condicion": "rondas<=10",
+    "estrella": "fichas>=6",
+    "intro": "El trono ya ocupó todos sus huecos. Rodéalo con raíces.",
+    "texto": "El rival ya tiene los cuatro huecos ocupados y 25 PV: rodea la formación con enjambre y Plaga Incesante.",
+    "mano": [
+     "Z01",
+     "Z02",
+     "Z06",
+     "Z08",
+     "Z04"
+    ],
+    "campo": [
+     "E05",
+     "E04",
+     "E03",
+     "E02"
+    ]
+   },
+   {
+    "id": "empress-09",
+    "n": 9,
+    "nombre": "Ensayo de la Colmena",
+    "tipo": "condicion",
+    "npc": "Z05",
+    "mazo": "empress",
+    "ia": "strategic",
+    "pv": 34,
+    "condicion": "fichas>=6",
+    "estrella": "bajas<=5",
+    "intro": "La Emperatriz te espera en el corazón del jardín. Llega con la camada entera."
+   },
+   {
+    "id": "empress-10",
+    "n": 10,
+    "nombre": "III · La Emperatriz",
+    "tipo": "jefe",
+    "npc": "Z00",
+    "mazo": "empress",
+    "ia": "strategic",
+    "pv": 42,
+    "estrella": "fichas>=10",
+    "intro": "Cada hoja que cortas me da dos más. Siempre nacerán más.",
+    "texto": "La Emperatriz empieza con un Retoño: no pierde PV en enfrentamientos entre Unidades.",
+    "campo": [
+     "Z00",
+     "Z90"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "emperor",
+  "numero": "IV",
+  "nombre": "El Emperador",
+  "lugar": "El Trono de Bronce",
+  "color": "#ffb347",
+  "acento": "#fff0c9",
+  "jefe": "E00",
+  "leccion": "Jerarquía: ordenar Unidades de mayor a menor coste.",
+  "relato": "En el Trono todo tiene su lugar y quien rompe la formación pierde fuerza. El Emperador no persigue la victoria rápida: la prepara. Aquí se gana con orden, paciencia y sin perder piezas.",
+  "titulo": "Mariscal de Bronce",
+  "cartas": [
+   "E12",
+   "E13"
+  ],
+  "niveles": [
+   {
+    "id": "emperor-01",
+    "n": 1,
+    "nombre": "Guardia de Puerta",
+    "tipo": "duelo",
+    "npc": "E01",
+    "mazo": "fool",
+    "ia": "heuristic",
+    "pv": 26,
+    "estrella": "pv>=20",
+    "intro": "¡Alto! Nadie entra en el Trono sin presentarse en formación."
+   },
+   {
+    "id": "emperor-02",
+    "n": 2,
+    "nombre": "Revista de Tropas",
+    "tipo": "duelo",
+    "npc": "E02",
+    "mazo": "priestess",
+    "ia": "heuristic",
+    "pv": 28,
+    "estrella": "rondas<=11",
+    "intro": "Revista de tropas. Si formas mal, pierdes. Así de simple."
+   },
+   {
+    "id": "emperor-03",
+    "n": 3,
+    "nombre": "Orden en Formación",
+    "tipo": "condicion",
+    "npc": "E03",
+    "mazo": "devil",
+    "ia": "heuristic",
+    "pv": 28,
+    "condicion": "bajas<=2",
+    "estrella": "pv>=22",
+    "intro": "Un buen soldado no pierde piezas. ¿Eres un buen soldado?"
+   },
+   {
+    "id": "emperor-04",
+    "n": 4,
+    "nombre": "Jerarquía",
+    "tipo": "especial",
+    "npc": "E04",
+    "mazo": "lovers",
+    "ia": "heuristic",
+    "pv": 28,
+    "prestado": "emperor",
+    "estrella": "rondas<=9",
+    "intro": "Toma la baraja imperial. Ordena tus Unidades y verás crecer al ejército.",
+    "texto": "Mazo prestado de El Emperador: usa Orden de Batalla para reordenar y activar la Jerarquía.",
+    "mano": [
+     "E01",
+     "E02",
+     "E03",
+     "E04",
+     "E07"
+    ]
+   },
+   {
+    "id": "emperor-05",
+    "n": 5,
+    "nombre": "Pretor de Hierro",
+    "tipo": "minijefe",
+    "npc": "E04",
+    "mazo": "emperor",
+    "ia": "heuristic",
+    "pv": 36,
+    "estrella": "bajas<=3",
+    "intro": "El Pretor de Hierro no retrocede. Nunca. Jamás.",
+    "texto": "El Pretor empieza en juego.",
+    "campo": [
+     "E04"
+    ]
+   },
+   {
+    "id": "emperor-06",
+    "n": 6,
+    "nombre": "Marcha Forzada",
+    "tipo": "duelo",
+    "npc": "E02",
+    "mazo": "fortune",
+    "ia": "strategic",
+    "pv": 30,
+    "estrella": "directos>=2",
+    "intro": "Marcha forzada. Golpea directo o quédate atrás."
+   },
+   {
+    "id": "emperor-07",
+    "n": 7,
+    "nombre": "Sin Retirada",
+    "tipo": "condicion",
+    "npc": "E03",
+    "mazo": "empress",
+    "ia": "heuristic",
+    "pv": 30,
+    "condicion": "bajas<=1",
+    "estrella": "pv>=25",
+    "intro": "Sin retirada: si pierdes más de una Unidad, la batalla es mía."
+   },
+   {
+    "id": "emperor-08",
+    "n": 8,
+    "nombre": "Asedio",
+    "tipo": "especial",
+    "npc": "E05",
+    "mazo": "emperor",
+    "ia": "strategic",
+    "pv": 20,
+    "prestado": "emperor",
+    "condicion": "rondas<=8",
+    "estrella": "bajas<=2",
+    "intro": "Mi muralla aguanta asedios de años. Tú tienes ocho rondas.",
+    "texto": "Asedio contra una formación sólida: 20 PV que quitar, tú con 24 PV y mazo prestado.",
+    "mano": [
+     "E02",
+     "E03",
+     "E04",
+     "E07",
+     "E08"
+    ],
+    "campo": [
+     "E05",
+     "E04"
+    ],
+    "miPV": 24
+   },
+   {
+    "id": "emperor-09",
+    "n": 9,
+    "nombre": "Ensayo Imperial",
+    "tipo": "condicion",
+    "npc": "E05",
+    "mazo": "emperor",
+    "ia": "strategic",
+    "pv": 36,
+    "condicion": "bajas<=3",
+    "estrella": "pv>=18",
+    "intro": "El Emperador ya conoce tu nombre. Ahora quiere conocer tu disciplina."
+   },
+   {
+    "id": "emperor-10",
+    "n": 10,
+    "nombre": "IV · El Emperador",
+    "tipo": "jefe",
+    "npc": "E00",
+    "mazo": "emperor",
+    "ia": "strategic",
+    "pv": 42,
+    "estrella": "bajas<=4",
+    "intro": "Mientras quede un soldado a mi lado no me tocarás. Rompe mi guardia, si puedes.",
+    "texto": "El Emperador no puede ser atacado mientras controle otra Unidad: rompe su guardia.",
+    "campo": [
+     "E00",
+     "E05"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lovers",
+  "numero": "VI",
+  "nombre": "Los Enamorados",
+  "lugar": "El Jardín de los Juramentos",
+  "color": "#ff7eb6",
+  "acento": "#ffe0ef",
+  "jefe": "L00",
+  "leccion": "Parejas: emparejar Unidades y golpear dos veces.",
+  "relato": "En el Jardín nada está solo: cada Unidad busca a su pareja. Los Enamorados enseñan que el vínculo da fuerza, y que separar a dos que se aman es la forma más cruel de ganar.",
+  "titulo": "Portador del Juramento",
+  "cartas": [
+   "L12",
+   "L13"
+  ],
+  "niveles": [
+   {
+    "id": "lovers-01",
+    "n": 1,
+    "nombre": "Primer Baile",
+    "tipo": "duelo",
+    "npc": "L03",
+    "mazo": "fool",
+    "ia": "heuristic",
+    "pv": 26,
+    "estrella": "rondas<=10",
+    "intro": "♪ Una canción para ti, viajero: termina en derrota, pero rima bien. ♪"
+   },
+   {
+    "id": "lovers-02",
+    "n": 2,
+    "nombre": "Carta sin Respuesta",
+    "tipo": "duelo",
+    "npc": "L01",
+    "mazo": "magician",
+    "ia": "heuristic",
+    "pv": 28,
+    "estrella": "pv>=20",
+    "intro": "Llevo una carta para mi dama. Si pierdo, no llegará nunca."
+   },
+   {
+    "id": "lovers-03",
+    "n": 3,
+    "nombre": "Dos Corazones",
+    "tipo": "condicion",
+    "npc": "L02",
+    "mazo": "death",
+    "ia": "heuristic",
+    "pv": 28,
+    "condicion": "bajas<=2",
+    "estrella": "combate>=15",
+    "intro": "Dos corazones laten mejor que uno. Protege a los tuyos."
+   },
+   {
+    "id": "lovers-04",
+    "n": 4,
+    "nombre": "Pareja Perfecta",
+    "tipo": "especial",
+    "npc": "L04",
+    "mazo": "devil",
+    "ia": "heuristic",
+    "pv": 28,
+    "prestado": "lovers",
+    "estrella": "rondas<=8",
+    "intro": "Te presto nuestras parejas. Bájalas juntas: separadas no bailan.",
+    "texto": "Mazo prestado de Los Enamorados: baja las dos parejas juntas y protégelas con Promesa de Protección.",
+    "mano": [
+     "L01",
+     "L02",
+     "L03",
+     "L04",
+     "L09"
+    ]
+   },
+   {
+    "id": "lovers-05",
+    "n": 5,
+    "nombre": "Dama del Lago",
+    "tipo": "minijefe",
+    "npc": "L06",
+    "mazo": "lovers",
+    "ia": "heuristic",
+    "pv": 36,
+    "estrella": "bajas<=3",
+    "intro": "Mi caballero y yo juramos no separarnos. Inténtalo.",
+    "texto": "La pareja Caballero y Dama ya está en juego.",
+    "campo": [
+     "L05",
+     "L06"
+    ]
+   },
+   {
+    "id": "lovers-06",
+    "n": 6,
+    "nombre": "Juramento Roto",
+    "tipo": "duelo",
+    "npc": "L05",
+    "mazo": "emperor",
+    "ia": "strategic",
+    "pv": 30,
+    "estrella": "trucos>=2",
+    "intro": "Mi juramento está roto… pero mi espada no."
+   },
+   {
+    "id": "lovers-07",
+    "n": 7,
+    "nombre": "Separados",
+    "tipo": "condicion",
+    "npc": "L04",
+    "mazo": "priestess",
+    "ia": "heuristic",
+    "pv": 30,
+    "condicion": "combate>=20",
+    "estrella": "rondas<=10",
+    "intro": "Nos separaron una vez. Desde entonces golpeamos el doble."
+   },
+   {
+    "id": "lovers-08",
+    "n": 8,
+    "nombre": "Doble Golpe",
+    "tipo": "especial",
+    "npc": "L00",
+    "mazo": "emperor",
+    "ia": "heuristic",
+    "pv": 15,
+    "prestado": "lovers",
+    "condicion": "rondas<=6",
+    "intro": "Juntos atacamos dos veces. Quince PV, dos defensores… y seis rondas.",
+    "texto": "Rompecabezas: 15 PV y dos defensores. Con Los Enamorados en campo cada pareja ataca dos veces.",
+    "mano": [
+     "L00",
+     "L01",
+     "L02",
+     "L05",
+     "L06"
+    ],
+    "campo": [
+     "E02",
+     "E01"
+    ]
+   },
+   {
+    "id": "lovers-09",
+    "n": 9,
+    "nombre": "Ensayo del Amor",
+    "tipo": "condicion",
+    "npc": "L06",
+    "mazo": "lovers",
+    "ia": "strategic",
+    "pv": 36,
+    "condicion": "bajas<=3",
+    "estrella": "pv>=18",
+    "intro": "Los Enamorados te miran con ternura. Y con algo de lástima."
+   },
+   {
+    "id": "lovers-10",
+    "n": 10,
+    "nombre": "VI · Los Enamorados",
+    "tipo": "jefe",
+    "npc": "L00",
+    "mazo": "lovers",
+    "ia": "strategic",
+    "pv": 42,
+    "estrella": "bajas<=4",
+    "intro": "Un corazón solo es débil. Dos, invencibles. ¿Cuántos traes tú?",
+    "texto": "Los Enamorados empiezan con una pareja emparejada.",
+    "campo": [
+     "L00",
+     "L01",
+     "L02"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "chariot",
+  "numero": "VII",
+  "nombre": "El Carro",
+  "lugar": "La Calzada de los Triunfos",
+  "color": "#6c8cff",
+  "acento": "#e2ecff",
+  "jefe": "C00",
+  "leccion": "Carga conjunta: atacar en grupo y arrollar a las Unidades en DEF.",
+  "relato": "La Calzada es recta y no tiene curvas: quien la recorre avanza o es arrollado. El Carro no enseña a esquivar, enseña a cargar juntos. Cada ataque empuja al siguiente y ninguna muralla aguanta una carga bien hecha.",
+  "titulo": "Auriga del Triunfo",
+  "cartas": [
+   "C12",
+   "C13"
+  ],
+  "niveles": [
+   {
+    "id": "chariot-01",
+    "n": 1,
+    "nombre": "Rodadas en el Barro",
+    "tipo": "duelo",
+    "npc": "C01",
+    "mazo": "fortune",
+    "ia": "heuristic",
+    "pv": 28,
+    "estrella": "rondas<=9",
+    "intro": "¡Paso al Carro! Todavía no lo ves… pero ya lo oyes llegar."
+   },
+   {
+    "id": "chariot-02",
+    "n": 2,
+    "nombre": "Escolta del Estandarte",
+    "tipo": "duelo",
+    "npc": "C10",
+    "mazo": "priestess",
+    "ia": "heuristic",
+    "pv": 30,
+    "estrella": "combate>=15",
+    "intro": "¡Tuuu-tuuu! Mi trompeta manda cargar. Y tú estás justo delante."
+   },
+   {
+    "id": "chariot-03",
+    "n": 3,
+    "nombre": "Carga de Prueba",
+    "tipo": "condicion",
+    "npc": "C02",
+    "mazo": "emperor",
+    "ia": "strategic",
+    "pv": 30,
+    "condicion": "directos>=2",
+    "estrella": "pv>=18",
+    "intro": "(El Corcel de Guerra resopla y escarba el suelo: quiere verte golpear directo dos veces.)"
+   },
+   {
+    "id": "chariot-04",
+    "n": 4,
+    "nombre": "Formación de Carga",
+    "tipo": "especial",
+    "npc": "C08",
+    "mazo": "death",
+    "ia": "strategic",
+    "pv": 28,
+    "prestado": "chariot",
+    "condicion": "combate>=15",
+    "estrella": "rondas<=8",
+    "intro": "Te presto la baraja del Carro. Ataca en grupo: nadie carga solo.",
+    "texto": "Mazo prestado de El Carro: ataca en grupo y suma la Carga Unida al golpe.",
+    "mano": [
+     "C01",
+     "C02",
+     "C03",
+     "C05",
+     "C08"
+    ]
+   },
+   {
+    "id": "chariot-05",
+    "n": 5,
+    "nombre": "Coloso de Bronce",
+    "tipo": "minijefe",
+    "npc": "C04",
+    "mazo": "chariot",
+    "ia": "strategic",
+    "pv": 36,
+    "estrella": "bajas<=3",
+    "intro": "EL COLOSO NO HABLA. EL COLOSO APLASTA.",
+    "texto": "El Coloso de Bronce (6/5) ya está en juego.",
+    "campo": [
+     "C04"
+    ]
+   },
+   {
+    "id": "chariot-06",
+    "n": 6,
+    "nombre": "Lanzas al Viento",
+    "tipo": "duelo",
+    "npc": "C03",
+    "mazo": "lovers",
+    "ia": "strategic",
+    "pv": 30,
+    "estrella": "trucos>=2",
+    "intro": "Una lanza sola se rompe. Una falange atraviesa murallas."
+   },
+   {
+    "id": "chariot-07",
+    "n": 7,
+    "nombre": "Sin Retroceso",
+    "tipo": "condicion",
+    "npc": "C08",
+    "mazo": "empress",
+    "ia": "strategic",
+    "pv": 32,
+    "condicion": "combate>=20",
+    "estrella": "bajas<=3",
+    "intro": "Sin retroceso: quita veinte PV en combate o vuelve al inicio de la calzada."
+   },
+   {
+    "id": "chariot-08",
+    "n": 8,
+    "nombre": "Arrollar",
+    "tipo": "especial",
+    "npc": "C00",
+    "mazo": "emperor",
+    "ia": "strategic",
+    "pv": 18,
+    "prestado": "chariot",
+    "condicion": "rondas<=6",
+    "intro": "Tres escudos en DEF y dieciocho PV. Arrolla o detente.",
+    "texto": "Rompecabezas: tres escudos imperiales en DEF y 18 PV. Con El Carro en campo, el exceso de ATQ arrolla y llega al rival.",
+    "mano": [
+     "C00",
+     "C01",
+     "C02",
+     "C05",
+     "C09"
+    ],
+    "campo": [
+     "E03/def",
+     "E04/def",
+     "E02/def"
+    ]
+   },
+   {
+    "id": "chariot-09",
+    "n": 9,
+    "nombre": "Ensayo del Carro",
+    "tipo": "condicion",
+    "npc": "C08",
+    "mazo": "chariot",
+    "ia": "strategic",
+    "pv": 38,
+    "condicion": "combate>=20",
+    "estrella": "pv>=15",
+    "intro": "El Carro ya enganchó los caballos. Demuéstrame que puedes seguirle el paso."
+   },
+   {
+    "id": "chariot-10",
+    "n": 10,
+    "nombre": "VII · El Carro",
+    "tipo": "jefe",
+    "npc": "C00",
+    "mazo": "chariot",
+    "ia": "strategic",
+    "pv": 44,
+    "estrella": "combate>=25",
+    "intro": "¡Monta o apártate! El triunfo no espera a nadie.",
+    "texto": "El Carro empieza en juego con el Estandarte del Triunfo: sus Unidades arrollan a las tuyas en DEF.",
+    "campo": [
+     "C00",
+     "C07"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "fortune",
+  "numero": "X",
+  "nombre": "La Rueda de la Fortuna",
+  "lugar": "El Casino del Destino",
+  "color": "#5ce1e6",
+  "acento": "#d9fbfc",
+  "jefe": "R00",
+  "leccion": "Azar: dados, monedas y arriesgar cuando vas detrás.",
+  "relato": "El Casino nunca cierra y la Rueda nunca para. Aquí no se pregunta si la suerte existe, sino cuánto estás dispuesto a apostar. Perder también cuenta: la Rueda siempre vuelve a girar.",
+  "titulo": "Jugador del Destino",
+  "cartas": [
+   "R12",
+   "R13"
+  ],
+  "niveles": [
+   {
+    "id": "fortune-01",
+    "n": 1,
+    "nombre": "Apuesta Pequeña",
+    "tipo": "duelo",
+    "npc": "R01",
+    "mazo": "fool",
+    "ia": "heuristic",
+    "pv": 26,
+    "estrella": "dados>=2",
+    "intro": "¿Apostamos? Si pierdes, me quedo tus cartas. Si ganas… ya veremos."
+   },
+   {
+    "id": "fortune-02",
+    "n": 2,
+    "nombre": "Mesa de Dados",
+    "tipo": "duelo",
+    "npc": "R02",
+    "mazo": "priestess",
+    "ia": "heuristic",
+    "pv": 28,
+    "estrella": "rondas<=10",
+    "intro": "Tira los dados. Yo tiro los míos. Que gane quien menos tiemble."
+   },
+   {
+    "id": "fortune-03",
+    "n": 3,
+    "nombre": "Todo o Nada",
+    "tipo": "condicion",
+    "npc": "R03",
+    "mazo": "devil",
+    "ia": "heuristic",
+    "pv": 28,
+    "condicion": "dados>=3",
+    "estrella": "pv>=18",
+    "intro": "Todo o nada. En esta mesa no hay término medio."
+   },
+   {
+    "id": "fortune-04",
+    "n": 4,
+    "nombre": "Ruleta del Destino",
+    "tipo": "especial",
+    "npc": "R05",
+    "mazo": "magician",
+    "ia": "heuristic",
+    "pv": 28,
+    "prestado": "fortune",
+    "estrella": "dados>=4",
+    "intro": "Te presto mi baraja. Lanza los dados y no mires atrás.",
+    "texto": "Mazo prestado de La Rueda: juega Ruleta del Destino y Doble o Nada y deja que los dados decidan.",
+    "mano": [
+     "R01",
+     "R02",
+     "R06",
+     "R07",
+     "R08"
+    ]
+   },
+   {
+    "id": "fortune-05",
+    "n": 5,
+    "nombre": "Bandido de la Suerte",
+    "tipo": "minijefe",
+    "npc": "R04",
+    "mazo": "fortune",
+    "ia": "heuristic",
+    "pv": 36,
+    "estrella": "bajas<=3",
+    "intro": "La suerte se roba, no se gana. ¡Arriba las manos!",
+    "texto": "El Bandido empieza en juego.",
+    "campo": [
+     "R04"
+    ]
+   },
+   {
+    "id": "fortune-06",
+    "n": 6,
+    "nombre": "Casa Gana",
+    "tipo": "duelo",
+    "npc": "R03",
+    "mazo": "emperor",
+    "ia": "strategic",
+    "pv": 30,
+    "estrella": "trucos>=2",
+    "intro": "La casa siempre gana. Hoy la casa soy yo."
+   },
+   {
+    "id": "fortune-07",
+    "n": 7,
+    "nombre": "Racha Perdida",
+    "tipo": "condicion",
+    "npc": "R05",
+    "mazo": "death",
+    "ia": "strategic",
+    "pv": 30,
+    "condicion": "dados>=5",
+    "estrella": "rondas<=9",
+    "intro": "¿Racha perdida o racha a punto de empezar? Lanza cinco veces y lo sabremos."
+   },
+   {
+    "id": "fortune-08",
+    "n": 8,
+    "nombre": "Moneda al Aire",
+    "tipo": "especial",
+    "npc": "R00",
+    "mazo": "fool",
+    "ia": "heuristic",
+    "pv": 10,
+    "prestado": "fortune",
+    "condicion": "rondas<=6",
+    "intro": "Diez PV cada uno y una moneda en el aire. ¿Cara o cruz?",
+    "texto": "Cara o cruz: ambos con 10 PV y mazo prestado de La Rueda; vence quien mejor use el azar.",
+    "mano": [
+     "R00",
+     "R01",
+     "R03",
+     "R08",
+     "R07"
+    ],
+    "miPV": 10
+   },
+   {
+    "id": "fortune-09",
+    "n": 9,
+    "nombre": "Ensayo de la Rueda",
+    "tipo": "condicion",
+    "npc": "R05",
+    "mazo": "fortune",
+    "ia": "strategic",
+    "pv": 36,
+    "condicion": "dados>=5",
+    "estrella": "bajas<=3",
+    "intro": "La Rueda gira solo para quien sabe esperar su número."
+   },
+   {
+    "id": "fortune-10",
+    "n": 10,
+    "nombre": "X · La Rueda de la Fortuna",
+    "tipo": "jefe",
+    "npc": "R00",
+    "mazo": "fortune",
+    "ia": "strategic",
+    "pv": 42,
+    "estrella": "dados>=8",
+    "intro": "Arriba, abajo, arriba otra vez. ¡Gira conmigo hasta caer!",
+    "texto": "La Rueda empieza con Moneda Trucada: cada dado alto quema PV.",
+    "campo": [
+     "R00",
+     "R10"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "death",
+  "numero": "XIII",
+  "nombre": "La Muerte",
+  "lugar": "El Umbral Silencioso",
+  "color": "#c9d6e8",
+  "acento": "#f1f5fb",
+  "jefe": "D00",
+  "leccion": "Sacrificio: cambiar piezas pequeñas por las grandes del rival.",
+  "relato": "El Umbral no es un lugar de miedo sino de calma. La Muerte no destruye por crueldad: ordena. Aquí se aprende a ofrecer lo pequeño y a cerrar con lo grande.",
+  "titulo": "Heraldo del Umbral",
+  "cartas": [
+   "D11",
+   "D12"
+  ],
+  "niveles": [
+   {
+    "id": "death-01",
+    "n": 1,
+    "nombre": "Campana de Duelo",
+    "tipo": "duelo",
+    "npc": "D01",
+    "mazo": "fool",
+    "ia": "heuristic",
+    "pv": 28,
+    "estrella": "bajas<=4",
+    "intro": "Dong… dong… La campana suena por alguien. Quizá por ti."
+   },
+   {
+    "id": "death-02",
+    "n": 2,
+    "nombre": "Segador Novicio",
+    "tipo": "duelo",
+    "npc": "D02",
+    "mazo": "lovers",
+    "ia": "strategic",
+    "pv": 28,
+    "estrella": "rondas<=10",
+    "intro": "Aún estoy aprendiendo a segar. Ten paciencia conmigo."
+   },
+   {
+    "id": "death-03",
+    "n": 3,
+    "nombre": "Ofrenda",
+    "tipo": "condicion",
+    "npc": "D03",
+    "mazo": "empress",
+    "ia": "heuristic",
+    "pv": 30,
+    "condicion": "sacrificios>=2",
+    "estrella": "pv>=18",
+    "intro": "Ofrece algo pequeño y recibirás algo grande. Así funciona el Umbral."
+   },
+   {
+    "id": "death-04",
+    "n": 4,
+    "nombre": "Valor del Sacrificio",
+    "tipo": "especial",
+    "npc": "D04",
+    "mazo": "emperor",
+    "ia": "strategic",
+    "pv": 28,
+    "prestado": "death",
+    "condicion": "sacrificios>=3",
+    "estrella": "rondas<=9",
+    "intro": "Te presto la baraja de La Muerte. Sacrifica sin miedo: aquí nada se pierde del todo.",
+    "texto": "Mazo prestado de La Muerte: sacrifica piezas baratas para destruir y robar.",
+    "mano": [
+     "D01",
+     "D02",
+     "D03",
+     "D08",
+     "D05"
+    ]
+   },
+   {
+    "id": "death-05",
+    "n": 5,
+    "nombre": "Portadora de Cenizas",
+    "tipo": "minijefe",
+    "npc": "D03",
+    "mazo": "death",
+    "ia": "strategic",
+    "pv": 36,
+    "estrella": "bajas<=5",
+    "intro": "Las cenizas que llevo fueron guerreros. Pronto llevaré las tuyas.",
+    "texto": "La Portadora empieza en juego.",
+    "campo": [
+     "D03"
+    ]
+   },
+   {
+    "id": "death-06",
+    "n": 6,
+    "nombre": "Cementerio Vivo",
+    "tipo": "duelo",
+    "npc": "D02",
+    "mazo": "priestess",
+    "ia": "strategic",
+    "pv": 30,
+    "estrella": "efecto>=10",
+    "intro": "Este cementerio está muy vivo. Demasiado, para mi gusto."
+   },
+   {
+    "id": "death-07",
+    "n": 7,
+    "nombre": "Sin Misericordia",
+    "tipo": "condicion",
+    "npc": "D04",
+    "mazo": "fortune",
+    "ia": "strategic",
+    "pv": 30,
+    "condicion": "rondas<=8",
+    "estrella": "sacrificios>=3",
+    "intro": "Sin misericordia: termina antes de la ronda nueve o el Umbral se cierra."
+   },
+   {
+    "id": "death-08",
+    "n": 8,
+    "nombre": "Cuenta Atrás",
+    "tipo": "especial",
+    "npc": "D00",
+    "mazo": "emperor",
+    "ia": "strategic",
+    "pv": 20,
+    "prestado": "death",
+    "condicion": "sacrificios>=2",
+    "intro": "Doce PV, una muralla y mi baraja. La salida está en el sacrificio.",
+    "texto": "Empiezas con 12 PV contra una formación imperial de 20 PV; la solución es sacrificar y destruir.",
+    "mano": [
+     "D00",
+     "D01",
+     "D02",
+     "D07",
+     "D09"
+    ],
+    "campo": [
+     "E04",
+     "E03"
+    ],
+    "miPV": 12
+   },
+   {
+    "id": "death-09",
+    "n": 9,
+    "nombre": "Ensayo del Umbral",
+    "tipo": "condicion",
+    "npc": "D04",
+    "mazo": "death",
+    "ia": "strategic",
+    "pv": 38,
+    "condicion": "sacrificios>=3",
+    "estrella": "pv>=15",
+    "intro": "La Muerte no se apresura. Tú deberías."
+   },
+   {
+    "id": "death-10",
+    "n": 10,
+    "nombre": "XIII · La Muerte",
+    "tipo": "jefe",
+    "npc": "D00",
+    "mazo": "death",
+    "ia": "strategic",
+    "pv": 44,
+    "estrella": "sacrificios>=5",
+    "intro": "No vengo a castigarte. Vengo a ordenar. Y tú estás fuera de lugar.",
+    "texto": "La Muerte empieza con Ciclo de Cenizas y no se destruye por empate.",
+    "campo": [
+     "D00",
+     "D06"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "devil",
+  "numero": "XV",
+  "nombre": "El Diablo",
+  "lugar": "El Banco de las Deudas",
+  "color": "#ff3b5c",
+  "acento": "#ffd1d9",
+  "jefe": "X00",
+  "leccion": "Tu vida es un recurso: pagarla para castigar más rápido.",
+  "relato": "El Banco concede todo lo que pidas si aceptas el interés. El Diablo es el último a quien se desafía porque su juego es el más honesto: te enseña a calcular exactamente cuánto estás dispuesto a pagar.",
+  "titulo": "Deudor de Nadie",
+  "cartas": [
+   "X11",
+   "X12"
+  ],
+  "niveles": [
+   {
+    "id": "devil-01",
+    "n": 1,
+    "nombre": "Primer Pago",
+    "tipo": "duelo",
+    "npc": "X01",
+    "mazo": "fool",
+    "ia": "strategic",
+    "pv": 30,
+    "estrella": "rondas<=9",
+    "intro": "Firmé un contrato una vez. Ahora pago intereses con cada golpe."
+   },
+   {
+    "id": "devil-02",
+    "n": 2,
+    "nombre": "Interés Compuesto",
+    "tipo": "duelo",
+    "npc": "X02",
+    "mazo": "priestess",
+    "ia": "strategic",
+    "pv": 30,
+    "estrella": "efecto>=8",
+    "intro": "¿Una carta más? Solo te costará un poquito de vida. Un poquito."
+   },
+   {
+    "id": "devil-03",
+    "n": 3,
+    "nombre": "Deuda Impagable",
+    "tipo": "condicion",
+    "npc": "X03",
+    "mazo": "lovers",
+    "ia": "strategic",
+    "pv": 30,
+    "condicion": "pv>=10",
+    "estrella": "efecto>=10",
+    "intro": "Tu deuda es impagable. Gana con diez PV o paga con todo."
+   },
+   {
+    "id": "devil-04",
+    "n": 4,
+    "nombre": "Contrato Carmesí",
+    "tipo": "especial",
+    "npc": "X04",
+    "mazo": "emperor",
+    "ia": "strategic",
+    "pv": 24,
+    "prestado": "devil",
+    "condicion": "efecto>=8",
+    "estrella": "rondas<=8",
+    "intro": "Te presto la baraja del Diablo. Paga, sacrifica y cobra el doble.",
+    "texto": "Mazo prestado de El Diablo: paga PV, sacrifica y haz que el rival cobre intereses.",
+    "mano": [
+     "X02",
+     "X03",
+     "X04",
+     "X07",
+     "X09"
+    ]
+   },
+   {
+    "id": "devil-05",
+    "n": 5,
+    "nombre": "Cobradora de Almas",
+    "tipo": "minijefe",
+    "npc": "X04",
+    "mazo": "devil",
+    "ia": "strategic",
+    "pv": 38,
+    "estrella": "bajas<=4",
+    "intro": "Vengo a cobrar. Y no acepto excusas, solo almas.",
+    "texto": "La Cobradora empieza en juego.",
+    "campo": [
+     "X04"
+    ]
+   },
+   {
+    "id": "devil-06",
+    "n": 6,
+    "nombre": "Cadenas",
+    "tipo": "duelo",
+    "npc": "X03",
+    "mazo": "death",
+    "ia": "strategic",
+    "pv": 32,
+    "estrella": "trucos>=2",
+    "intro": "Las cadenas no se rompen. Se heredan."
+   },
+   {
+    "id": "devil-07",
+    "n": 7,
+    "nombre": "Sin Rescate",
+    "tipo": "condicion",
+    "npc": "X02",
+    "mazo": "empress",
+    "ia": "strategic",
+    "pv": 32,
+    "condicion": "rondas<=8",
+    "estrella": "pv>=10",
+    "intro": "Sin rescate: nadie vendrá por ti después de la ronda ocho."
+   },
+   {
+    "id": "devil-08",
+    "n": 8,
+    "nombre": "Prestamista",
+    "tipo": "especial",
+    "npc": "X00",
+    "mazo": "magician",
+    "ia": "strategic",
+    "pv": 24,
+    "prestado": "devil",
+    "condicion": "efecto>=10",
+    "intro": "Veinte PV y un Mago endeudado. Calcula cada pago… o paga tú.",
+    "texto": "Empiezas con 20 PV: el mazo prestado de El Diablo exige calcular cada pago.",
+    "mano": [
+     "X00",
+     "X02",
+     "X03",
+     "X07",
+     "X09"
+    ],
+    "campo": [
+     "M03",
+     "M05"
+    ],
+    "miPV": 20
+   },
+   {
+    "id": "devil-09",
+    "n": 9,
+    "nombre": "Ensayo del Diablo",
+    "tipo": "condicion",
+    "npc": "X04",
+    "mazo": "devil",
+    "ia": "strategic",
+    "pv": 40,
+    "condicion": "efecto>=10",
+    "estrella": "pv>=8",
+    "intro": "El Diablo revisó tu cuenta. Le debes una victoria."
+   },
+   {
+    "id": "devil-10",
+    "n": 10,
+    "nombre": "XV · El Diablo",
+    "tipo": "jefe",
+    "npc": "X00",
+    "mazo": "devil",
+    "ia": "strategic",
+    "pv": 46,
+    "estrella": "efecto>=15",
+    "intro": "Todo lo que ganaste aquí tenía un precio. Ha llegado la factura.",
+    "texto": "El Diablo empieza con Altar de las Cadenas: cada pago de PV quema al rival.",
+    "campo": [
+     "X00",
+     "X06"
+    ]
+   }
+  ]
+ }
+]

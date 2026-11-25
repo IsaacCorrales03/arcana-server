@@ -1,0 +1,10 @@
+{
+  "pointsPerDivision": 100,
+  "win": 20,
+  "streakBonus": 5,
+  "bonusAt": 3,
+  "loss": 15,
+  "grace": 1,
+  "placements": 5,
+  "seasonDays": 60
+}
